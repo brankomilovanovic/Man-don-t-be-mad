@@ -3,7 +3,7 @@ package players;
 public class Player {
 
 	private static String playerPawn;
-	private static String playerPawnPosition;
+	private static int playerPawnPosition = 0;
 	private static boolean playerStart = false;
 	private static boolean playerParking;
 	private static int playerRollsDiceNumber = 0;
@@ -12,7 +12,7 @@ public class Player {
 		super();
 	}
 
-	public Player(String playerPawn, String playerPawnPosition, boolean playerStart, boolean playerParking, int playerRollsDiceNumber) {
+	public Player(String playerPawn, int playerPawnPosition, boolean playerStart, boolean playerParking, int playerRollsDiceNumber) {
 		super();
 		Player.playerPawn = playerPawn;
 		Player.playerPawnPosition = playerPawnPosition;
@@ -29,11 +29,11 @@ public class Player {
 		Player.playerPawn = playerPawn;
 	}
 
-	public String getPlayerPawnPosition() {
+	public int getPlayerPawnPosition() {
 		return playerPawnPosition;
 	}
 
-	public void setPlayerPawnPosition(String playerPawnPosition) {
+	public void setPlayerPawnPosition(int playerPawnPosition) {
 		Player.playerPawnPosition = playerPawnPosition;
 	}
 

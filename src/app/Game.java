@@ -51,15 +51,40 @@ public class Game extends Gui {
 		playerRed1.addActionListener(new ActionListener(){  
 			 @Override
 			 public void actionPerformed(ActionEvent e){  
-				 if(playerRed.getPlayerRollsDiceNumber() == 6) {
-					  System.out.println("Choice player red 1!");
+				 if(playerRed.getPlayerPawnPosition() == 0 && playerRed.getPlayerRollsDiceNumber() == 6 ) {
 					  String[] position = Gui.position.get(1).split(",");
 					  playerRed1.setBounds(Integer.parseInt(position[0]), Integer.parseInt(position[1]) , 61 , 61);
 					  playerRed.setPlayerStart(true);
 					  playerRed.setPlayerRollsDiceNumber(0);
+					  playerRed.setPlayerPawnPosition(1);
 				 }
-				 else if(playerRed.isPlayerStart() == false || playerRed.getPlayerRollsDiceNumber() != 6) {
-					 System.out.println("You haven't got number 6 yet!");
+				 else if(playerRed.isPlayerStart() == false || playerRed.getPlayerPawnPosition() == 0) {
+					  System.out.println("You haven't got number 6 yet!");
+				 }
+				 try {
+					 if(playerRed.isPlayerParking() == true) {
+						 System.out.println("This pawn is in the house, play with another!");
+					 }
+					 else if(playerRed.isPlayerStart() == true && playerRed.getPlayerPawnPosition() > 0) {
+						  if(playerRed.getPlayerPawnPosition() == 44) {
+							  playerRed.setPlayerParking(true);
+							  System.out.println("This pawn is in the house, play with another!");
+						  }
+						  else if(playerRed.getPlayerPawnPosition() + playerRed.getPlayerRollsDiceNumber() > 44) {
+							  System.out.println("You don't have enough fields for this pawn, play with another.");
+						  }
+						  else if(playerRed.getPlayerPawnPosition() + playerRed.getPlayerRollsDiceNumber() < 45) {
+							  int nextPosition = playerRed.getPlayerPawnPosition() + playerRed.getPlayerRollsDiceNumber();
+							  System.out.println("Choice player red 1! Position: " + nextPosition);
+							  String[] currentPosition = Gui.position.get(nextPosition).split(",");
+						      playerRed1.setBounds(Integer.parseInt(currentPosition[0]), Integer.parseInt(currentPosition[1]) , 61 , 61);
+							  playerRed.setPlayerRollsDiceNumber(0);
+							  playerRed.setPlayerPawnPosition(nextPosition);
+						  }  
+					 }
+				 } 
+				 catch(Exception error) {
+					 System.out.println("You don't have enough fields for this pawn, play with another.");
 				 }
 			 }  
 		});
