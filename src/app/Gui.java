@@ -201,6 +201,7 @@ public class Gui {
 		position_2_red_start.setBackground(Color.WHITE);
 		position_2_red_start.setBounds(10, 297, 61, 61);
 		frame.getContentPane().add(position_2_red_start);
+		position.put(1, "10,297");
 		
 		JLabel position_5 = new JLabel("");
 		position_5.setOpaque(true);
