@@ -1,4 +1,4 @@
-package players;
+package characters;
 
 import javax.swing.JButton;
 

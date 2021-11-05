@@ -1,9 +1,10 @@
 package app;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
-import players.Pawn;
-import players.Player;
+import characters.Pawn;
+import characters.Player;
 
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,8 @@ public class Game extends Gui {
 	
 	//Get dice
 	static JButton buttonDice = gui.getButtonDice();
+	//Text under dice
+	static JLabel currentPlayerRollsDice = gui.getCurrentPlayerRollsDice();
 	
 	//Get players pawn RED
 	static JButton playerRed1 = gui.getPlayerRed1();
@@ -44,9 +47,58 @@ public class Game extends Gui {
 			 @Override
 			 public void actionPerformed(ActionEvent e){  
 				 Random random = new Random();
-				 int randomNumber = random.nextInt(6) + 1;
-				 System.out.println("Rolls dice! Number: " + randomNumber);
-				 playerRed.setPlayerRollsDiceNumber(randomNumber);
+				 if(playerRed.getPlayerRollsDiceNext() == true) {
+					 int randomNumber = random.nextInt(6) + 1;
+					 System.out.println("Red player rolls dice! Number: " + randomNumber);
+					 if(randomNumber == 1) {
+						 buttonDice.setText("<html>•");
+					 }
+					 else if(randomNumber == 2) {
+						 buttonDice.setText("<html>•<br><br>⠀⠀⠀•<br>");
+					 }
+					 else if(randomNumber == 3) {
+						 buttonDice.setText("<html>•⠀⠀<br>  •<br>⠀⠀⠀•<br>");
+					 }
+					 else if(randomNumber == 4) {
+						 buttonDice.setText("<html>•⠀⠀•<br><br>•⠀⠀•<br>");
+					 }
+					 else if(randomNumber == 5) {
+						 buttonDice.setText("<html>•⠀⠀•<br>  •<br>•⠀⠀•<br>");
+					 }
+					 else if(randomNumber == 6) {
+						 buttonDice.setText("<html>• • •<br>• • •<br>• • •<br>");
+					 }
+					 playerRed.setPlayerRollsDiceNumber(randomNumber);
+					 playerRed.setPlayerRollsDiceNext(false);
+					 playerBlue.setPlayerRollsDiceNext(true);
+					 currentPlayerRollsDice.setText("<html>RED player got the number: "+randomNumber+"<br><br>The player is currently playing:<br>- Player BLUE -<br>PRESS THE DICE!!!");
+				 }
+				 else if(playerBlue.getPlayerRollsDiceNext() == true) {
+					 int randomNumber = random.nextInt(6) + 1;
+					 System.out.println("Blue player rolls dice! Number: " + randomNumber);
+					 if(randomNumber == 1) {
+						 buttonDice.setText("<html>•");
+					 }
+					 else if(randomNumber == 2) {
+						 buttonDice.setText("<html>•<br><br>⠀⠀⠀•<br>");
+					 }
+					 else if(randomNumber == 3) {
+						 buttonDice.setText("<html>•⠀⠀<br>  •<br>⠀⠀⠀•<br>");
+					 }
+					 else if(randomNumber == 4) {
+						 buttonDice.setText("<html>•⠀⠀•<br><br>•⠀⠀•<br>");
+					 }
+					 else if(randomNumber == 5) {
+						 buttonDice.setText("<html>•⠀⠀•<br>  •<br>•⠀⠀•<br>");
+					 }
+					 else if(randomNumber == 6) {
+						 buttonDice.setText("<html>• • •<br>• • •<br>• • •<br>");
+					 }
+					 playerBlue.setPlayerRollsDiceNumber(randomNumber);
+					 playerBlue.setPlayerRollsDiceNext(false);
+					 playerRed.setPlayerRollsDiceNext(true);
+					 currentPlayerRollsDice.setText("<html>BLUE player got the number: "+randomNumber+"<br><br>The player is currently playing:<br>- Player RED -<br>PRESS THE DICE!!!");
+				 }
 			 }  
 		});
 	}

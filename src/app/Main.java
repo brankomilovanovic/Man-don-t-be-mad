@@ -2,6 +2,13 @@ package app;
 
 import java.awt.EventQueue;
 
+/* Kada igrac udje u kucu do prvog mesta ono postaje zauzeto i sledeci pijun moze da ide samo do sledeceg slobodnog mesta
+ * Kada se to odradi ubaciti plavog igraca i mogucnost jedenja jedan drugog
+ * 
+ * 
+ * 
+ * 
+ * */
 public class Main {
 
 	Gui gui = new Gui();

@@ -19,6 +19,8 @@ public class Gui {
 	
 	//Dice
 	private static JButton buttonDice = new JButton();
+	//Text under dice
+	private static JLabel currentPlayerRollsDice = new JLabel();
 	
 	//Players red
 	private static JButton playerRed1 = new JButton("1");
@@ -51,6 +53,10 @@ public class Gui {
 	
 	public JButton getButtonDice() {
 		return buttonDice;
+	}
+	
+	public JLabel getCurrentPlayerRollsDice() {
+		return currentPlayerRollsDice;
 	}
 	
 	//Get method for red players
@@ -171,12 +177,11 @@ public class Gui {
 		frame.getContentPane().add(buttonDice);
 		Game.rollsDice();
 		
-		JLabel currentPlayerRollsDice = new JLabel();
 		currentPlayerRollsDice.setHorizontalAlignment(SwingConstants.CENTER);
 		currentPlayerRollsDice.setVerticalAlignment(SwingConstants.TOP);
 		currentPlayerRollsDice.setFont(new Font("Tahoma", Font.BOLD, 11));
-		currentPlayerRollsDice.setBounds(773, 178, 174, 51);
-		currentPlayerRollsDice.setText("<html>The player is currently playing:<br>Player 1<br>PRESS THE DICE!!!");
+		currentPlayerRollsDice.setBounds(773, 178, 174, 95);
+		currentPlayerRollsDice.setText("<html>PRESS THE DICE!!!");
 		frame.getContentPane().add(currentPlayerRollsDice);
 		
 		JLabel position_2_red_start = new JLabel("\u25BA");
