@@ -28,6 +28,7 @@ public class Gui {
 		return frame;
 	}
 
+	//In case of editing GUI
 	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
