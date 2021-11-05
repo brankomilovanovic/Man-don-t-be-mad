@@ -2,17 +2,38 @@ package app;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.Window;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import java.util.HashMap;
+import java.util.Map;
 
 //import java.awt.EventQueue;
 
 public class Gui {
 
-	private JFrame frame;
+	private static JFrame frame;
+	
+	//Dice
+	private static JButton buttonDice = new JButton();
+	
+	//Players red
+	private static JButton playerRed1 = new JButton("1");
+	private static JButton playerRed2 = new JButton("2");
+	private static JButton playerRed3 = new JButton("3");
+	private static JButton playerRed4 = new JButton("4");
+	
+	//Players blue
+	private static JButton playerBlue1 = new JButton("1");
+	private static JButton playerBlue2 = new JButton("2");
+	private static JButton playerBlue3 = new JButton("3");
+	private static JButton playerBlue4 = new JButton("4");
+	
+	//Position on table
+	static Map<Integer, String> position = new HashMap<>();
 	
 	public Gui() {
 		super();
@@ -21,13 +42,51 @@ public class Gui {
 	
 	public Gui(JFrame frame) {
 		super();
-		this.frame = frame;
+		Gui.frame = frame;
 	}
 
 	public Window getFrame() {
 		return frame;
 	}
-
+	
+	public JButton getButtonDice() {
+		return buttonDice;
+	}
+	
+	//Get method for red players
+	public JButton getPlayerRed1() {
+		return playerRed1;
+	}
+	
+	public JButton getPlayerRed2() {
+		return playerRed2;
+	}
+	
+	public JButton getPlayerRed3() {
+		return playerRed3;
+	}
+	
+	public JButton getPlayerRed4() {
+		return playerRed4;
+	}
+	
+	//Get method for blue players
+	public JButton getPlayerBlue1() {
+		return playerBlue1;
+	}
+	
+	public JButton getPlayerBlue2() {
+		return playerBlue2;
+	}
+	
+	public JButton getPlayerBlue3() {
+		return playerBlue3;
+	}
+	
+	public JButton getPlayerBlue4() {
+		return playerBlue4;
+	}
+	
 	//In case of editing GUI
 	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -42,75 +101,75 @@ public class Gui {
 		});
 	}*/
 
-	public void initialize() {
+	public static void initialize() throws HeadlessException {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 983, 859);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton playerRed1 = new JButton("1");
 		playerRed1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerRed1.setForeground(Color.WHITE);
 		playerRed1.setBackground(Color.RED);
 		playerRed1.setBounds(81, 83, 61, 61);
 		frame.getContentPane().add(playerRed1);
+		Game.playerRed1();
 		
-		JButton playerRed2 = new JButton("2");
 		playerRed2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerRed2.setForeground(Color.WHITE);
 		playerRed2.setBackground(Color.RED);
 		playerRed2.setBounds(152, 83, 61, 61);
 		frame.getContentPane().add(playerRed2);
+		Game.playerRed2();
 		
-		JButton playerRed3 = new JButton("3");
 		playerRed3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerRed3.setForeground(Color.WHITE);
 		playerRed3.setBackground(Color.RED);
 		playerRed3.setBounds(81, 155, 61, 61);
 		frame.getContentPane().add(playerRed3);
+		Game.playerRed3();
 		
-		JButton playerRed4 = new JButton("4");
 		playerRed4.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerRed4.setForeground(Color.WHITE);
 		playerRed4.setBackground(Color.RED);
 		playerRed4.setBounds(152, 155, 61, 61);
 		frame.getContentPane().add(playerRed4);
+		Game.playerRed4();
 		
-		JButton playerBlue1 = new JButton("1");
 		playerBlue1.setForeground(Color.WHITE);
 		playerBlue1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerBlue1.setBackground(Color.BLUE);
 		playerBlue1.setBounds(649, 657, 61, 61);
 		frame.getContentPane().add(playerBlue1);
+		Game.playerBlue1();
 		
-		JButton playerBlue2 = new JButton("2");
 		playerBlue2.setForeground(Color.WHITE);
 		playerBlue2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerBlue2.setBackground(Color.BLUE);
 		playerBlue2.setBounds(578, 657, 61, 61);
 		frame.getContentPane().add(playerBlue2);
+		Game.playerBlue2();
 		
-		JButton playerBlue3 = new JButton("3");
 		playerBlue3.setForeground(Color.WHITE);
 		playerBlue3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerBlue3.setBackground(Color.BLUE);
 		playerBlue3.setBounds(649, 585, 61, 61);
 		frame.getContentPane().add(playerBlue3);
+		Game.playerBlue3();
 		
-		JButton playerBlue4 = new JButton("4");
 		playerBlue4.setForeground(Color.WHITE);
 		playerBlue4.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerBlue4.setBackground(Color.BLUE);
 		playerBlue4.setBounds(578, 585, 61, 61);
 		frame.getContentPane().add(playerBlue4);
+		Game.playerBlue4();
 		
-		JButton buttonDice = new JButton();
 		buttonDice.setFont(new Font("Tahoma", Font.BOLD, 45));
 		buttonDice.setForeground(Color.BLACK);
 		buttonDice.setBackground(Color.WHITE);
 		buttonDice.setText("<html>• • •<br>• • •<br>• • •<br>");
 		buttonDice.setBounds(796, 11, 154, 154);
 		frame.getContentPane().add(buttonDice);
+		Game.rollsDice();
 		
 		JLabel currentPlayerRollsDice = new JLabel();
 		currentPlayerRollsDice.setHorizontalAlignment(SwingConstants.CENTER);

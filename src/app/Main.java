@@ -5,8 +5,9 @@ import java.awt.EventQueue;
 public class Main {
 
 	Gui gui = new Gui();
-
+	
 	public static void main(String[] args) {
+		System.out.println("Game start!");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -20,6 +21,6 @@ public class Main {
 	}
 
 	public Main() {
-		gui.initialize();
+		Gui.initialize();
 	}
 }
