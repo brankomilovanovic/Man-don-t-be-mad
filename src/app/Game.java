@@ -120,22 +120,6 @@ public class Game extends Gui {
 					  System.out.println("You haven't got number 6 yet!");
 				 }
 				 
-				 
-				 if(pawnRed2.getPawnPosition() == pawnRed2.getPawnParkingPosition()) {
-					 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
-					 pawnRed2.setPawnParking(true); 
-				 }
-				 
-				 if(pawnRed3.getPawnPosition() == pawnRed3.getPawnParkingPosition()) {
-					 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
-					 pawnRed3.setPawnParking(true); 
-				 }
-				 
-				 if(pawnRed4.getPawnPosition() == pawnRed4.getPawnParkingPosition()) {
-					 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
-					 pawnRed4.setPawnParking(true); 
-				 }
-				 
 				 //Check empty position in the house
 				 if((pawnRed2.getPawnParkingPosition() == 44 && pawnRed2.isPawnParking() == true) || (pawnRed3.getPawnParkingPosition() == 44 && pawnRed3.isPawnParking() == true) || (pawnRed4.getPawnParkingPosition() == 44 && pawnRed4.isPawnParking() == true)) {
 					 if(pawnRed1.isPawnParking() == false) {
@@ -175,14 +159,16 @@ public class Game extends Gui {
 						  
 						  if(pawnRed1.getPawnPosition() == pawnRed1.getPawnParkingPosition() && pawnRed1.isPawnParking() == false) {
 							  pawnRed1.setPawnParking(true);
-							  //pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
 							  System.out.println("This pawn 1 is in the house, play with another!");
 						  }
 					 }
 				 }
+				 
 				 catch(Exception error) {
 					 System.out.println("You don't have enough fields for this pawn, play with another. ERROR!");
 				 }
+				 //Check if there is already a pawn in the house and fill in the first place to check other positions
+				 positionInHouseCheckForRed1();
 			 }  
 		});
 	}
@@ -266,6 +252,8 @@ public class Game extends Gui {
 				 catch(Exception error) {
 					 System.out.println("You don't have enough fields for this pawn, play with another. ERROR!");
 				 }
+				//Check if there is already a pawn in the house and fill in the first place to check other positions
+				 positionInHouseCheckForRed2();
 			 }  
 		});
 	}
@@ -349,7 +337,10 @@ public class Game extends Gui {
 				 catch(Exception error) {
 					 System.out.println("You don't have enough fields for this pawn, play with another. ERROR!");
 				 }
-			 }  
+				 
+			     //Check if there is already a pawn in the house and fill in the first place to check other positions
+			     positionInHouseCheckForRed3();
+			 } 
 		});
 	}
 	
@@ -431,6 +422,9 @@ public class Game extends Gui {
 				 catch(Exception error) {
 					 System.out.println("You don't have enough fields for this pawn, play with another. ERROR!");
 				 }
+				 
+				 //Check if there is already a pawn in the house and fill in the first place to check other positions
+			     positionInHouseCheckForRed4();
 			 }  
 		});
 	}
@@ -470,5 +464,325 @@ public class Game extends Gui {
 				 System.out.println("Choice player blue 4!");
 			 }  
 		});
+	}
+	
+	public static void positionInHouseCheckForRed1() {
+		//Position [4321] or [3421]
+		if(pawnRed2.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+			pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+			pawnRed2.setPawnParking(true);
+			 
+			 //Position [4321]
+			 if(pawnRed3.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+				 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+				 pawnRed3.setPawnParking(true);  
+				 if(pawnRed4.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+					 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+					 pawnRed4.setPawnParking(true); 
+				 }
+			 }
+			 
+			 //Position [3421]
+			 if(pawnRed4.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+				pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+				pawnRed4.setPawnParking(true);  
+				if(pawnRed3.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+					pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+					pawnRed3.setPawnParking(true); 
+				 }
+			 }
+		 }
+		 
+		 //Position [4231] or [2431]
+		 if(pawnRed3.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+			 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+			 pawnRed3.setPawnParking(true);
+			 
+			 //Position [2431]
+			 if(pawnRed4.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+				 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+				 pawnRed4.setPawnParking(true);  
+				 if(pawnRed2.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+					 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+					 pawnRed2.setPawnParking(true);  
+				 }
+			 }
+			 
+			 //Position [4231]
+			 if(pawnRed2.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+				 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+				 pawnRed2.setPawnParking(true);  
+				 if(pawnRed4.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+					 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+					 pawnRed4.setPawnParking(true);  
+				 }
+			 }
+		 }
+		 
+		 //Position [2341] or [3241]
+		 if(pawnRed4.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+			 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+			 pawnRed4.setPawnParking(true);
+			 
+			 //Position [2341]
+			 if(pawnRed3.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+				 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+				 pawnRed3.setPawnParking(true);  
+				 if(pawnRed2.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+					 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+					 pawnRed2.setPawnParking(true);  
+				 }
+			 }
+			 
+			 //Position [3241]
+			 if(pawnRed2.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+				 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+				 pawnRed2.setPawnParking(true);  
+				 if(pawnRed3.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+					 pawnRed3.setPawnParkingPosition(pawnRed1.getPawnPosition());
+					 pawnRed3.setPawnParking(true);  
+				 }
+			 }
+		 }
+	}
+	
+	public static void positionInHouseCheckForRed2() {
+		//Position [4312] or [3412]
+		if(pawnRed1.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+			 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+			 pawnRed1.setPawnParking(true);
+			 
+			 //Position [4312]
+			 if(pawnRed3.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+				 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+				 pawnRed3.setPawnParking(true);  
+				 if(pawnRed4.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+					 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+					 pawnRed4.setPawnParking(true); 
+				 }
+			 }
+			 
+			 //Position [3412]
+			 if(pawnRed4.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+				pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+				pawnRed4.setPawnParking(true);  
+				if(pawnRed3.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+					pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+					pawnRed3.setPawnParking(true); 
+				 }
+			 }
+		 }
+		 
+		 //Position [4132] or [1432]
+		 if(pawnRed3.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+			 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+			 pawnRed3.setPawnParking(true);
+			 
+			 //Position [1432]
+			 if(pawnRed4.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+				 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+				 pawnRed4.setPawnParking(true);  
+				 if(pawnRed1.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+					 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+					 pawnRed1.setPawnParking(true);  
+				 }
+			 }
+			 
+			 //Position [4132]
+			 if(pawnRed1.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+				 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+				 pawnRed1.setPawnParking(true);  
+				 if(pawnRed4.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+					 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+					 pawnRed4.setPawnParking(true);  
+				 }
+			 }
+		 }
+		 
+		 //Position [1342] or [3142]
+		 if(pawnRed4.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+			 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+			 pawnRed4.setPawnParking(true);
+			 
+			 //Position [1342]
+			 if(pawnRed3.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+				 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+				 pawnRed3.setPawnParking(true);  
+				 if(pawnRed1.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+					 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+					 pawnRed1.setPawnParking(true);  
+				 }
+			 }
+			 
+			 //Position [3142]
+			 if(pawnRed1.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+				 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+				 pawnRed1.setPawnParking(true);  
+				 if(pawnRed3.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+					 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+					 pawnRed3.setPawnParking(true);  
+				 }
+			 }
+		 } 
+	}
+	
+	public static void positionInHouseCheckForRed3() {
+		//Position [4213] or [2413]
+		if(pawnRed1.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+			 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+			 pawnRed1.setPawnParking(true);
+			 
+			 //Position [4213]
+			 if(pawnRed2.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+				 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+				 pawnRed2.setPawnParking(true);  
+				 if(pawnRed4.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+					 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+					 pawnRed4.setPawnParking(true); 
+				 }
+			 }
+			 
+			 //Position [2413]
+			 if(pawnRed4.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+				pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+				pawnRed4.setPawnParking(true);  
+				if(pawnRed2.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+					pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+					pawnRed2.setPawnParking(true); 
+				 }
+			 }
+		 }
+		 
+		 //Position [4123] or [1423]
+		 if(pawnRed2.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+			 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+			 pawnRed2.setPawnParking(true);
+			 
+			 //Position [1423]
+			 if(pawnRed4.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+				 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+				 pawnRed4.setPawnParking(true);  
+				 if(pawnRed1.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+					 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+					 pawnRed1.setPawnParking(true);  
+				 }
+			 }
+			 
+			 //Position [4123]
+			 if(pawnRed1.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+				 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+				 pawnRed1.setPawnParking(true);  
+				 if(pawnRed4.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+					 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+					 pawnRed4.setPawnParking(true);  
+				 }
+			 }
+		 }
+		 
+		 //Position [1243] or [2143]
+		 if(pawnRed4.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+			 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+			 pawnRed4.setPawnParking(true);
+			 
+			 //Position [1243]
+			 if(pawnRed2.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+				 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+				 pawnRed2.setPawnParking(true);  
+				 if(pawnRed1.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+					 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+					 pawnRed1.setPawnParking(true);  
+				 }
+			 }
+			 
+			 //Position [2143]
+			 if(pawnRed1.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+				 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+				 pawnRed1.setPawnParking(true);  
+				 if(pawnRed2.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+					 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+					 pawnRed2.setPawnParking(true);  
+				 }
+			 }
+		 }
+	}
+	
+	public static void positionInHouseCheckForRed4() {
+		//Position [2314] or [3214]
+		if(pawnRed1.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+			 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+			 pawnRed1.setPawnParking(true);
+			 
+			 //Position [2314]
+			 if(pawnRed3.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+				 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+				 pawnRed3.setPawnParking(true);  
+				 if(pawnRed2.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+					 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+					 pawnRed2.setPawnParking(true); 
+				 }
+			 }
+			 
+			 //Position [3214]
+			 if(pawnRed2.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+				 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+				 pawnRed2.setPawnParking(true);  
+				if(pawnRed3.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+					pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+					pawnRed3.setPawnParking(true); 
+				 }
+			 }
+		 }
+		 
+		 //Position [1234] or [2134]
+		 if(pawnRed3.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+			 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+			 pawnRed3.setPawnParking(true);
+			 
+			 //Position [1234]
+			 if(pawnRed2.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+				 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+				 pawnRed2.setPawnParking(true);  
+				 if(pawnRed1.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+					 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+					 pawnRed1.setPawnParking(true);  
+				 }
+			 }
+			 
+			 //Position [2134]
+			 if(pawnRed1.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+				 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+				 pawnRed1.setPawnParking(true);  
+				 if(pawnRed2.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+					 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+					 pawnRed2.setPawnParking(true);  
+				 }
+			 }
+		 }
+		 
+		 //Position [1324] or [3124]
+		 if(pawnRed2.getPawnPosition() == pawnRed4.getPawnParkingPosition()-1 && pawnRed4.isPawnParking() == true) {
+			 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+			 pawnRed2.setPawnParking(true);
+			 
+			 //Position [1324]
+			 if(pawnRed3.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+				 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+				 pawnRed3.setPawnParking(true);  
+				 if(pawnRed1.getPawnPosition() == pawnRed3.getPawnParkingPosition()-1 && pawnRed3.isPawnParking() == true) {
+					 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+					 pawnRed1.setPawnParking(true);  
+				 }
+			 }
+			 
+			 //Position [3124]
+			 if(pawnRed1.getPawnPosition() == pawnRed2.getPawnParkingPosition()-1 && pawnRed2.isPawnParking() == true) {
+				 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+				 pawnRed1.setPawnParking(true);  
+				 if(pawnRed3.getPawnPosition() == pawnRed1.getPawnParkingPosition()-1 && pawnRed1.isPawnParking() == true) {
+					 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+					 pawnRed3.setPawnParking(true);  
+				 }
+			 }
+		 } 
 	}
 }

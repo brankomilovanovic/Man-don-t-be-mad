@@ -2,7 +2,7 @@ package app;
 
 import java.awt.EventQueue;
 
-/* Kada igrac udje u kucu do prvog mesta ono postaje zauzeto i sledeci pijun moze da ide samo do sledeceg slobodnog mesta
+/* Zabraniti ulazak pijuna u kucu na mesto gde vec postoji pinuj, da ne bi bila 2 pijuna u jednoj kuci
  * Kada se to odradi ubaciti plavog igraca i mogucnost jedenja jedan drugog
  * kada plavi igrac igra pozicija ce biti trenutna pozicija -20, zbog napredovanja u odnosu na poziciju crvenog
  * 
