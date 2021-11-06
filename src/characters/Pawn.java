@@ -7,7 +7,7 @@ public class Pawn {
 	private int pawnPosition = 0;
 	private boolean pawnStart = false;
 	private boolean pawnParking = false;
-	private int pawnParkingPosition;
+	private int pawnParkingPosition = 44;
 	
 	public Pawn(JButton pawn) {
 		super();

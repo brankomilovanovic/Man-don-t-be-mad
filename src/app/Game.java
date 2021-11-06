@@ -107,8 +107,9 @@ public class Game extends Gui {
 	public static void playerRed1() throws HeadlessException {
 		playerRed1.addActionListener(new ActionListener(){  
 			 @Override
-			 public void actionPerformed(ActionEvent e){  
-				 if(pawnRed1.isPawnStart() == false && playerRed.getPlayerRollsDiceNumber() == 6 ) {
+			 public void actionPerformed(ActionEvent e){
+				 //Check that it meets the conditions for start
+				 if(pawnRed1.getPawnPosition() == 0 && playerRed.getPlayerRollsDiceNumber() == 6 ) {
 					  String[] position = Gui.position.get(1).split(",");
 					  playerRed1.setBounds(Integer.parseInt(position[0]), Integer.parseInt(position[1]) , 61 , 61);
 					  pawnRed1.setPawnStart(true);
@@ -119,31 +120,68 @@ public class Game extends Gui {
 					  System.out.println("You haven't got number 6 yet!");
 				 }
 				 
-				 try {
-					 if(pawnRed1.isPawnParking() == true) {
-						 System.out.println("This pawn is in the house, play with another!");
+				 
+				 if(pawnRed2.getPawnPosition() == pawnRed2.getPawnParkingPosition()) {
+					 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+					 pawnRed2.setPawnParking(true); 
+				 }
+				 
+				 if(pawnRed3.getPawnPosition() == pawnRed3.getPawnParkingPosition()) {
+					 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+					 pawnRed3.setPawnParking(true); 
+				 }
+				 
+				 if(pawnRed4.getPawnPosition() == pawnRed4.getPawnParkingPosition()) {
+					 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+					 pawnRed4.setPawnParking(true); 
+				 }
+				 
+				 //Check empty position in the house
+				 if((pawnRed2.getPawnParkingPosition() == 44 && pawnRed2.isPawnParking() == true) || (pawnRed3.getPawnParkingPosition() == 44 && pawnRed3.isPawnParking() == true) || (pawnRed4.getPawnParkingPosition() == 44 && pawnRed4.isPawnParking() == true)) {
+					 if(pawnRed1.isPawnParking() == false) {
+						 pawnRed1.setPawnParkingPosition(43); 
+					 }	
+				 }
+				 
+				 if((pawnRed2.getPawnParkingPosition() == 43 && pawnRed2.isPawnParking() == true) || (pawnRed3.getPawnParkingPosition() == 43 && pawnRed3.isPawnParking() == true) || (pawnRed4.getPawnParkingPosition() == 43 && pawnRed4.isPawnParking() == true)) {
+					 if(pawnRed1.isPawnParking() == false) {
+						 pawnRed1.setPawnParkingPosition(42); 
 					 }
-					 else if(pawnRed1.isPawnStart() == true && pawnRed1.getPawnPosition() > 0) {
-						  if(pawnRed1.getPawnPosition() == 44) {
-							  pawnRed1.setPawnParking(true);
-							  pawnRed1.setPawnParkingPosition(44);
-							  System.out.println("This pawn is in the house, play with another!");
-						  }
-						  else if(pawnRed1.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() > 44) {
-							  System.out.println("You don't have enough fields for this pawn, play with another.");
-						  }
-						  else if(pawnRed1.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() < 45) {
+				 }
+				 
+				 if((pawnRed2.getPawnParkingPosition() == 42 && pawnRed2.isPawnParking() == true) || (pawnRed3.getPawnParkingPosition() == 42 && pawnRed3.isPawnParking() == true) || (pawnRed4.getPawnParkingPosition() == 42 && pawnRed4.isPawnParking() == true)) {
+					 if(pawnRed1.isPawnParking() == false) {
+						 pawnRed1.setPawnParkingPosition(41); 
+					 }
+				 }
+				 
+				 //Pawn set on next position
+				 try {
+					 if(pawnRed1.isPawnStart() == true && pawnRed1.getPawnPosition() > 0) {
+						  if(pawnRed1.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() <= pawnRed1.getPawnParkingPosition()) {
 							  int nextPosition = pawnRed1.getPawnPosition() + playerRed.getPlayerRollsDiceNumber();
-							  System.out.println("Choice player red 1! Position: " + nextPosition);
+							  System.out.println("Choice player red 1! Position: " + nextPosition + ", house position: " + pawnRed1.getPawnParkingPosition());
 							  String[] currentPosition = Gui.position.get(nextPosition).split(",");
-						      playerRed1.setBounds(Integer.parseInt(currentPosition[0]), Integer.parseInt(currentPosition[1]) , 61 , 61);
+							  playerRed1.setBounds(Integer.parseInt(currentPosition[0]), Integer.parseInt(currentPosition[1]) , 61 , 61);
 							  playerRed.setPlayerRollsDiceNumber(0);
 							  pawnRed1.setPawnPosition(nextPosition);
-						  }  
+						  }
+						  else if (pawnRed1.getPawnPosition() == pawnRed1.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
+							  System.out.println("This pawn 1 is in the house, play with another!");
+						  } 
+						  else if (pawnRed1.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() > pawnRed1.getPawnParkingPosition()) {
+							  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+						  }
+						  
+						  if(pawnRed1.getPawnPosition() == pawnRed1.getPawnParkingPosition() && pawnRed1.isPawnParking() == false) {
+							  pawnRed1.setPawnParking(true);
+							  //pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+							  System.out.println("This pawn 1 is in the house, play with another!");
+						  }
 					 }
-				 } 
+				 }
 				 catch(Exception error) {
-					 System.out.println("You don't have enough fields for this pawn, play with another.");
+					 System.out.println("You don't have enough fields for this pawn, play with another. ERROR!");
 				 }
 			 }  
 		});
@@ -166,43 +204,62 @@ public class Game extends Gui {
 					  System.out.println("You haven't got number 6 yet!");
 				 }
 				 
-				 //Check pawn in house
-				 if(pawnRed2.isPawnParking() == true) {
-					 System.out.println("This pawn is in the house, play with another!");
+				 if(pawnRed1.getPawnPosition() == pawnRed1.getPawnParkingPosition()) {
+					 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+					 pawnRed1.setPawnParking(true); 
+				 }
+				 
+				 if(pawnRed3.getPawnPosition() == pawnRed3.getPawnParkingPosition()) {
+					 pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+					 pawnRed3.setPawnParking(true); 
+				 }
+				 
+				 if(pawnRed4.getPawnPosition() == pawnRed4.getPawnParkingPosition()) {
+					 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+					 pawnRed4.setPawnParking(true); 
 				 }
 				 
 				 //Check empty position in the house
-				 if(pawnRed1.getPawnParkingPosition() == 44 || pawnRed3.getPawnParkingPosition() == 44 || pawnRed4.getPawnParkingPosition() == 44) {
-					  pawnRed2.setPawnParkingPosition(43);
+				 if((pawnRed1.getPawnParkingPosition() == 44 && pawnRed1.isPawnParking() == true) || (pawnRed3.getPawnParkingPosition() == 44 && pawnRed3.isPawnParking() == true) || (pawnRed4.getPawnParkingPosition() == 44 && pawnRed4.isPawnParking() == true)) {
+					 if(pawnRed2.isPawnParking() == false) {
+						 pawnRed2.setPawnParkingPosition(43); 
+					 }	
 				 }
-				 else if(pawnRed1.getPawnParkingPosition() == 43 || pawnRed3.getPawnParkingPosition() == 43 || pawnRed4.getPawnParkingPosition() == 43) {
-					  pawnRed2.setPawnParkingPosition(42);
+				 
+				 if((pawnRed1.getPawnParkingPosition() == 43 && pawnRed1.isPawnParking() == true) || (pawnRed3.getPawnParkingPosition() == 43 && pawnRed3.isPawnParking() == true) || (pawnRed4.getPawnParkingPosition() == 43 && pawnRed4.isPawnParking() == true)) {
+					 if(pawnRed2.isPawnParking() == false) {
+						 pawnRed2.setPawnParkingPosition(42); 
+					 }
 				 }
-				 else if(pawnRed1.getPawnParkingPosition() == 42 || pawnRed3.getPawnParkingPosition() == 42 || pawnRed4.getPawnParkingPosition() == 42) {
-					  pawnRed2.setPawnParkingPosition(41);
-				 } 
-				 else {
-					  pawnRed2.setPawnParkingPosition(44);
+				 
+				 if((pawnRed1.getPawnParkingPosition() == 42 && pawnRed1.isPawnParking() == true) || (pawnRed3.getPawnParkingPosition() == 42 && pawnRed3.isPawnParking() == true) || (pawnRed4.getPawnParkingPosition() == 42 && pawnRed4.isPawnParking() == true)) {
+					 if(pawnRed2.isPawnParking() == false) {
+						 pawnRed2.setPawnParkingPosition(41); 
+					 }
 				 }
 				 
 				 //Pawn set on next position
 				 try {
 					 if(pawnRed2.isPawnStart() == true && pawnRed2.getPawnPosition() > 0) {
-						  if(pawnRed2.getPawnPosition() == pawnRed2.getPawnParkingPosition()) {
-							  pawnRed2.setPawnParking(true);
-							  pawnRed2.setPawnParkingPosition(pawnRed2.getPawnParkingPosition());
-							  System.out.println("This pawn is in the house, play with another!");
-						  }
-						  else if(pawnRed2.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() < pawnRed2.getPawnParkingPosition()) {
+						  if(pawnRed2.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() <= pawnRed2.getPawnParkingPosition()) {
 							  int nextPosition = pawnRed2.getPawnPosition() + playerRed.getPlayerRollsDiceNumber();
-							  System.out.println("Choice player red 2! Position: " + nextPosition);
+							  System.out.println("Choice player red 2! Position: " + nextPosition + ", house position: " + pawnRed2.getPawnParkingPosition());
 							  String[] currentPosition = Gui.position.get(nextPosition).split(",");
-						      playerRed2.setBounds(Integer.parseInt(currentPosition[0]), Integer.parseInt(currentPosition[1]) , 61 , 61);
+							  playerRed2.setBounds(Integer.parseInt(currentPosition[0]), Integer.parseInt(currentPosition[1]) , 61 , 61);
 							  playerRed.setPlayerRollsDiceNumber(0);
 							  pawnRed2.setPawnPosition(nextPosition);
 						  }
-						  else {
-							  System.out.println("You don't have enough fields for this pawn or he is in the house, play with another.");
+						  else if (pawnRed2.getPawnPosition() == pawnRed2.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
+							  System.out.println("This pawn 2 is in the house, play with another!");
+						  } 
+						  else if (pawnRed2.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() > pawnRed2.getPawnParkingPosition()) {
+							  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+						  }
+						  
+						  if(pawnRed2.getPawnPosition() == pawnRed2.getPawnParkingPosition() && pawnRed2.isPawnParking() == false) {
+							  pawnRed2.setPawnParking(true);
+							  //pawnRed2.setPawnParkingPosition(pawnRed2.getPawnParkingPosition());
+							  System.out.println("This pawn 2 is in the house, play with another!");
 						  }
 					 }
 				 }
@@ -217,7 +274,8 @@ public class Game extends Gui {
 	public static void playerRed3() throws HeadlessException {
 		playerRed3.addActionListener(new ActionListener(){  
 			 @Override
-			 public void actionPerformed(ActionEvent e){  
+			 public void actionPerformed(ActionEvent e){
+				 //Check that it meets the conditions for start
 				 if(pawnRed3.getPawnPosition() == 0 && playerRed.getPlayerRollsDiceNumber() == 6 ) {
 					  String[] position = Gui.position.get(1).split(",");
 					  playerRed3.setBounds(Integer.parseInt(position[0]), Integer.parseInt(position[1]) , 61 , 61);
@@ -228,30 +286,68 @@ public class Game extends Gui {
 				 else if(pawnRed3.isPawnStart() == false || pawnRed3.getPawnPosition() == 0) {
 					  System.out.println("You haven't got number 6 yet!");
 				 }
-				 try {
-					 if(pawnRed3.isPawnParking() == true) {
-						 System.out.println("This pawn is in the house, play with another!");
+				 
+				 if(pawnRed1.getPawnPosition() == pawnRed1.getPawnParkingPosition()) {
+					 pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+					 pawnRed1.setPawnParking(true); 
+				 }
+				 
+				 if(pawnRed2.getPawnPosition() == pawnRed2.getPawnParkingPosition()) {
+					 pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+					 pawnRed2.setPawnParking(true); 
+				 }
+				 
+				 if(pawnRed4.getPawnPosition() == pawnRed4.getPawnParkingPosition()) {
+					 pawnRed4.setPawnParkingPosition(pawnRed4.getPawnPosition());
+					 pawnRed4.setPawnParking(true); 
+				 }
+				 
+				 //Check empty position in the house
+				 if((pawnRed1.getPawnParkingPosition() == 44 && pawnRed1.isPawnParking() == true) || (pawnRed2.getPawnParkingPosition() == 44 && pawnRed2.isPawnParking() == true) || (pawnRed4.getPawnParkingPosition() == 44 && pawnRed4.isPawnParking() == true)) {
+					 if(pawnRed3.isPawnParking() == false) {
+						 pawnRed3.setPawnParkingPosition(43); 
+					 }	
+				 }
+				 
+				 if((pawnRed1.getPawnParkingPosition() == 43 && pawnRed1.isPawnParking() == true) || (pawnRed2.getPawnParkingPosition() == 43 && pawnRed2.isPawnParking() == true) || (pawnRed4.getPawnParkingPosition() == 43 && pawnRed4.isPawnParking() == true)) {
+					 if(pawnRed3.isPawnParking() == false) {
+						 pawnRed3.setPawnParkingPosition(42); 
 					 }
-					 else if(pawnRed3.isPawnStart() == true && pawnRed3.getPawnPosition() > 0) {
-						  if(pawnRed3.getPawnPosition() == 44) {
-							  pawnRed3.setPawnParking(true);
-							  System.out.println("This pawn is in the house, play with another!");
-						  }
-						  else if(pawnRed3.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() > 44) {
-							  System.out.println("You don't have enough fields for this pawn, play with another.");
-						  }
-						  else if(pawnRed3.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() < 45) {
+				 }
+				 
+				 if((pawnRed1.getPawnParkingPosition() == 42 && pawnRed1.isPawnParking() == true) || (pawnRed2.getPawnParkingPosition() == 42 && pawnRed2.isPawnParking() == true) || (pawnRed4.getPawnParkingPosition() == 42 && pawnRed4.isPawnParking() == true)) {
+					 if(pawnRed3.isPawnParking() == false) {
+						 pawnRed3.setPawnParkingPosition(41); 
+					 }
+				 }
+				 
+				 //Pawn set on next position
+				 try {
+					 if(pawnRed3.isPawnStart() == true && pawnRed3.getPawnPosition() > 0) {
+						  if(pawnRed3.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() <= pawnRed3.getPawnParkingPosition()) {
 							  int nextPosition = pawnRed3.getPawnPosition() + playerRed.getPlayerRollsDiceNumber();
-							  System.out.println("Choice player red 3! Position: " + nextPosition);
+							  System.out.println("Choice player red 3! Position: " + nextPosition + ", house position: " + pawnRed3.getPawnParkingPosition());
 							  String[] currentPosition = Gui.position.get(nextPosition).split(",");
 							  playerRed3.setBounds(Integer.parseInt(currentPosition[0]), Integer.parseInt(currentPosition[1]) , 61 , 61);
 							  playerRed.setPlayerRollsDiceNumber(0);
 							  pawnRed3.setPawnPosition(nextPosition);
-						  }  
+						  }
+						  else if (pawnRed3.getPawnPosition() == pawnRed3.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
+							  System.out.println("This pawn 3 is in the house, play with another!");
+						  } 
+						  else if (pawnRed3.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() > pawnRed3.getPawnParkingPosition()) {
+							  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+						  }
+						  
+						  if(pawnRed3.getPawnPosition() == pawnRed3.getPawnParkingPosition() && pawnRed3.isPawnParking() == false) {
+							  pawnRed3.setPawnParking(true);
+							  //pawnRed3.setPawnParkingPosition(pawnRed3.getPawnParkingPosition());
+							  System.out.println("This pawn 3 is in the house, play with another!");
+						  }
 					 }
-				 } 
+				 }
 				 catch(Exception error) {
-					 System.out.println("You don't have enough fields for this pawn, play with another.");
+					 System.out.println("You don't have enough fields for this pawn, play with another. ERROR!");
 				 }
 			 }  
 		});
@@ -261,7 +357,8 @@ public class Game extends Gui {
 	public static void playerRed4() throws HeadlessException {
 		playerRed4.addActionListener(new ActionListener(){  
 			 @Override
-			 public void actionPerformed(ActionEvent e){  
+			 public void actionPerformed(ActionEvent e){
+				 //Check that it meets the conditions for start
 				 if(pawnRed4.getPawnPosition() == 0 && playerRed.getPlayerRollsDiceNumber() == 6 ) {
 					  String[] position = Gui.position.get(1).split(",");
 					  playerRed4.setBounds(Integer.parseInt(position[0]), Integer.parseInt(position[1]) , 61 , 61);
@@ -272,30 +369,67 @@ public class Game extends Gui {
 				 else if(pawnRed4.isPawnStart() == false || pawnRed4.getPawnPosition() == 0) {
 					  System.out.println("You haven't got number 6 yet!");
 				 }
-				 try {
-					 if(pawnRed4.isPawnParking() == true) {
-						 System.out.println("This pawn is in the house, play with another!");
+				 
+				 if(pawnRed1.getPawnPosition() == pawnRed1.getPawnParkingPosition()) {
+					 //pawnRed1.setPawnParkingPosition(pawnRed1.getPawnPosition());
+					 pawnRed1.setPawnParking(true); 
+				 }
+				 
+				 if(pawnRed2.getPawnPosition() == pawnRed2.getPawnParkingPosition()) {
+					// pawnRed2.setPawnParkingPosition(pawnRed2.getPawnPosition());
+					 pawnRed2.setPawnParking(true); 
+				 }
+				 
+				 if(pawnRed3.getPawnPosition() == pawnRed3.getPawnParkingPosition()) {
+					 //pawnRed3.setPawnParkingPosition(pawnRed3.getPawnPosition());
+					 pawnRed3.setPawnParking(true); 
+				 }
+				 
+				//Check empty position in the house
+				 if((pawnRed1.getPawnParkingPosition() == 44 && pawnRed1.isPawnParking() == true) || (pawnRed2.getPawnParkingPosition() == 44 && pawnRed2.isPawnParking() == true) || (pawnRed3.getPawnParkingPosition() == 44 && pawnRed3.isPawnParking() == true)) {
+					 if(pawnRed4.isPawnParking() == false) {
+						 pawnRed4.setPawnParkingPosition(43); 
+					 }	
+				 }
+				 
+				 if((pawnRed1.getPawnParkingPosition() == 43 && pawnRed1.isPawnParking() == true) || (pawnRed2.getPawnParkingPosition() == 43 && pawnRed2.isPawnParking() == true) || (pawnRed3.getPawnParkingPosition() == 43 && pawnRed3.isPawnParking() == true)) {
+					 if(pawnRed4.isPawnParking() == false) {
+						 pawnRed4.setPawnParkingPosition(42); 
 					 }
-					 else if(pawnRed4.isPawnStart() == true && pawnRed4.getPawnPosition() > 0) {
-						  if(pawnRed4.getPawnPosition() == 44) {
-							  pawnRed4.setPawnParking(true);
-							  System.out.println("This pawn is in the house, play with another!");
-						  }
-						  else if(pawnRed4.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() > 44) {
-							  System.out.println("You don't have enough fields for this pawn, play with another.");
-						  }
-						  else if(pawnRed4.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() < 45) {
+				 }
+				 
+				 if((pawnRed1.getPawnParkingPosition() == 42 && pawnRed1.isPawnParking() == true) || (pawnRed2.getPawnParkingPosition() == 42 && pawnRed2.isPawnParking() == true) || (pawnRed3.getPawnParkingPosition() == 42 && pawnRed3.isPawnParking() == true)) {
+					 if(pawnRed4.isPawnParking() == false) {
+						 pawnRed4.setPawnParkingPosition(41); 
+					 }
+				 }
+				 
+				//Pawn set on next position
+				 try {
+					 if(pawnRed4.isPawnStart() == true && pawnRed4.getPawnPosition() > 0) {
+						  if(pawnRed4.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() <= pawnRed4.getPawnParkingPosition()) {
 							  int nextPosition = pawnRed4.getPawnPosition() + playerRed.getPlayerRollsDiceNumber();
-							  System.out.println("Choice player red 4! Position: " + nextPosition);
+							  System.out.println("Choice player red 4! Position: " + nextPosition + ", house position: " + pawnRed4.getPawnParkingPosition());
 							  String[] currentPosition = Gui.position.get(nextPosition).split(",");
 							  playerRed4.setBounds(Integer.parseInt(currentPosition[0]), Integer.parseInt(currentPosition[1]) , 61 , 61);
 							  playerRed.setPlayerRollsDiceNumber(0);
 							  pawnRed4.setPawnPosition(nextPosition);
-						  }  
+						  }
+						  else if (pawnRed4.getPawnPosition() == pawnRed4.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
+							  System.out.println("This pawn 4 is in the house, play with another!");
+						  } 
+						  else if (pawnRed4.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() > pawnRed4.getPawnParkingPosition()) {
+							  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+						  }
+						  
+						  if(pawnRed4.getPawnPosition() == pawnRed4.getPawnParkingPosition() && pawnRed4.isPawnParking() == false) {
+							  pawnRed4.setPawnParking(true);
+					          System.out.println("This pawn 4 is in the house, play with another!");
+						  }
 					 }
-				 } 
+				 }
 				 catch(Exception error) {
-					 System.out.println("You don't have enough fields for this pawn, play with another.");
+					 System.out.println("You don't have enough fields for this pawn, play with another. ERROR!");
 				 }
 			 }  
 		});

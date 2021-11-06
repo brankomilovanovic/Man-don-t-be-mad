@@ -298,7 +298,7 @@ public class Gui {
 		position_15.setBackground(Color.WHITE);
 		position_15.setBounds(436, 225, 61, 61);
 		frame.getContentPane().add(position_15);
-		position.put(14, "436,255");
+		position.put(14, "436,225");
 		
 		JLabel position_16 = new JLabel("");
 		position_16.setOpaque(true);
