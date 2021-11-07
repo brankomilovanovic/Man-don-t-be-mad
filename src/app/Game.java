@@ -179,6 +179,9 @@ public class Game extends Gui {
 				 
 				 //After every move, check winner
 				 playerRedFinishGame();
+				 
+				 //Eat pawn if they are the same positions
+				 pawnRedEatAnotherPawn();
 			 }  
 		});
 	}
@@ -254,6 +257,9 @@ public class Game extends Gui {
 				 
 				 //After every move, check winner
 				 playerRedFinishGame();
+				 
+				 //Eat pawn if they are the same positions
+				 pawnRedEatAnotherPawn();
 			 }  
 		});
 	}
@@ -329,6 +335,9 @@ public class Game extends Gui {
 			     
 			     //After every move, check winner
 				 playerRedFinishGame();
+				 
+				 //Eat pawn if they are the same positions
+				 pawnRedEatAnotherPawn();
 			 } 
 		});
 	}
@@ -404,6 +413,9 @@ public class Game extends Gui {
 			     
 			     //After every move, check winner
 				 playerRedFinishGame();
+				 
+				 //Eat pawn if they are the same positions
+				 pawnRedEatAnotherPawn();
 			 }  
 		});
 	}
@@ -480,6 +492,9 @@ public class Game extends Gui {
 					 
 					 //After every move, check winner
 					 playerBlueFinishGame();
+					 
+					//Eat pawn if they are the same positions
+					 pawnBlueEatAnotherPawn();
 				 }  
 			});
 		}
@@ -555,6 +570,9 @@ public class Game extends Gui {
 					 
 					 //After every move, check winner
 					 playerBlueFinishGame();
+					 
+					 //Eat pawn if they are the same positions
+					 pawnBlueEatAnotherPawn();
 				 }  
 			});
 		}
@@ -630,6 +648,9 @@ public class Game extends Gui {
 				     
 					 //After every move, check winner
 					 playerBlueFinishGame();
+					 
+					 //Eat pawn if they are the same positions
+					 pawnBlueEatAnotherPawn();
 				 } 
 			});
 		}
@@ -705,6 +726,9 @@ public class Game extends Gui {
 				     
 					 //After every move, check winner
 					 playerBlueFinishGame();
+					 
+					 //Eat pawn if they are the same positions
+					 pawnBlueEatAnotherPawn();
 				 }  
 			});
 		}
@@ -1565,6 +1589,135 @@ public class Game extends Gui {
 		 return false;
 	}
 	
+	public static void pawnRedEatAnotherPawn() {
+		
+		String[] positionRed1 = Gui.positionRed.get(pawnRed1.getPawnPosition()).split(",");
+		String[] positionRed2 = Gui.positionRed.get(pawnRed2.getPawnPosition()).split(",");
+		String[] positionRed3 = Gui.positionRed.get(pawnRed3.getPawnPosition()).split(",");
+		String[] positionRed4 = Gui.positionRed.get(pawnRed4.getPawnPosition()).split(",");
+
+	    String positionRed1Current = Integer.parseInt(positionRed1[0]) + "," + Integer.parseInt(positionRed1[1]) + "," + 61 + "," + 61;
+	    String positionRed2Current = Integer.parseInt(positionRed2[0]) + "," + Integer.parseInt(positionRed2[1]) + "," + 61 + "," + 61;
+	    String positionRed3Current = Integer.parseInt(positionRed3[0]) + "," + Integer.parseInt(positionRed3[1]) + "," + 61 + "," + 61;
+	    String positionRed4Current = Integer.parseInt(positionRed4[0]) + "," + Integer.parseInt(positionRed4[1]) + "," + 61 + "," + 61;
+		
+	    String[] positionBlue1 = Gui.positionBlue.get(pawnBlue1.getPawnPosition()).split(",");
+	    String[] positionBlue2 = Gui.positionBlue.get(pawnBlue2.getPawnPosition()).split(",");
+	    String[] positionBlue3 = Gui.positionBlue.get(pawnBlue3.getPawnPosition()).split(",");
+	    String[] positionBlue4 = Gui.positionBlue.get(pawnBlue4.getPawnPosition()).split(",");
+	    
+	    String positionBlue1Current = Integer.parseInt(positionBlue1[0]) + "," + Integer.parseInt(positionBlue1[1]) + "," + 61 + "," + 61;
+	    String positionBlue2Current = Integer.parseInt(positionBlue2[0]) + "," + Integer.parseInt(positionBlue2[1]) + "," + 61 + "," + 61;
+	    String positionBlue3Current = Integer.parseInt(positionBlue3[0]) + "," + Integer.parseInt(positionBlue3[1]) + "," + 61 + "," + 61;
+	    String positionBlue4Current = Integer.parseInt(positionBlue4[0]) + "," + Integer.parseInt(positionBlue4[1]) + "," + 61 + "," + 61;
+	    
+	    //System.out.println("Equals: " + positionRed1Current.equals(positionBlue1Current));
+
+		if((positionRed1Current.equals(positionBlue1Current) && pawnBlue1.isPawnStart() == true) || (positionRed2Current.equals(positionBlue1Current) && pawnBlue1.isPawnStart() == true) || 
+				(positionRed3Current.equals(positionBlue1Current) && pawnBlue1.isPawnStart() == true) || (positionRed4Current.equals(positionBlue1Current) && pawnBlue1.isPawnStart() == true)) {
+			String[] setPositionBlue = Gui.positionBlue.get(45).split(",");
+		    playerBlue1.setBounds(Integer.parseInt(setPositionBlue[0]), Integer.parseInt(setPositionBlue[1]) , 61 , 61);
+			pawnBlue1.setPawnParking(false);
+			pawnBlue1.setPawnParkingPosition(44);
+			pawnBlue1.setPawnPosition(0);
+			pawnBlue1.setPawnStart(false);
+		}
+		
+		if((positionRed1Current.equals(positionBlue2Current) && pawnBlue2.isPawnStart() == true) || (positionRed2Current.equals(positionBlue2Current) && pawnBlue2.isPawnStart() == true) || 
+				(positionRed3Current.equals(positionBlue2Current) && pawnBlue2.isPawnStart() == true) || (positionRed4Current.equals(positionBlue2Current) && pawnBlue2.isPawnStart() == true)) {
+			String[] setPositionBlue = Gui.positionBlue.get(46).split(",");
+		    playerBlue2.setBounds(Integer.parseInt(setPositionBlue[0]), Integer.parseInt(setPositionBlue[1]) , 61 , 61);
+			pawnBlue2.setPawnParking(false);
+			pawnBlue2.setPawnParkingPosition(44);
+			pawnBlue2.setPawnPosition(0);
+			pawnBlue2.setPawnStart(false);
+		}
+		
+		if((positionRed1Current.equals(positionBlue3Current) && pawnBlue3.isPawnStart() == true) || (positionRed2Current.equals(positionBlue3Current) && pawnBlue3.isPawnStart() == true) || 
+				(positionRed3Current.equals(positionBlue3Current) && pawnBlue3.isPawnStart() == true) || (positionRed4Current.equals(positionBlue3Current) && pawnBlue3.isPawnStart() == true)) {
+			String[] setPositionBlue = Gui.positionBlue.get(47).split(",");
+		    playerBlue3.setBounds(Integer.parseInt(setPositionBlue[0]), Integer.parseInt(setPositionBlue[1]) , 61 , 61);
+			pawnBlue3.setPawnParking(false);
+			pawnBlue3.setPawnParkingPosition(44);
+			pawnBlue3.setPawnPosition(0);
+			pawnBlue3.setPawnStart(false);
+		}
+		
+		if((positionRed1Current.equals(positionBlue4Current) && pawnBlue4.isPawnStart() == true) || (positionRed2Current.equals(positionBlue4Current) && pawnBlue4.isPawnStart() == true) || 
+				(positionRed3Current.equals(positionBlue4Current) && pawnBlue4.isPawnStart() == true) || (positionRed4Current.equals(positionBlue4Current) && pawnBlue4.isPawnStart() == true)) {
+			String[] setPositionBlue = Gui.positionBlue.get(48).split(",");
+		    playerBlue4.setBounds(Integer.parseInt(setPositionBlue[0]), Integer.parseInt(setPositionBlue[1]) , 61 , 61);
+			pawnBlue4.setPawnParking(false);
+			pawnBlue4.setPawnParkingPosition(44);
+			pawnBlue4.setPawnPosition(0);
+			pawnBlue4.setPawnStart(false);
+		}
+	}
+	
+	public static void pawnBlueEatAnotherPawn() {
+	
+		String[] positionBlue1 = Gui.positionBlue.get(pawnBlue1.getPawnPosition()).split(",");
+	    String[] positionBlue2 = Gui.positionBlue.get(pawnBlue2.getPawnPosition()).split(",");
+	    String[] positionBlue3 = Gui.positionBlue.get(pawnBlue3.getPawnPosition()).split(",");
+	    String[] positionBlue4 = Gui.positionBlue.get(pawnBlue4.getPawnPosition()).split(",");
+	    
+	    String positionBlue1Current = Integer.parseInt(positionBlue1[0]) + "," + Integer.parseInt(positionBlue1[1]) + "," + 61 + "," + 61;
+	    String positionBlue2Current = Integer.parseInt(positionBlue2[0]) + "," + Integer.parseInt(positionBlue2[1]) + "," + 61 + "," + 61;
+	    String positionBlue3Current = Integer.parseInt(positionBlue3[0]) + "," + Integer.parseInt(positionBlue3[1]) + "," + 61 + "," + 61;
+	    String positionBlue4Current = Integer.parseInt(positionBlue4[0]) + "," + Integer.parseInt(positionBlue4[1]) + "," + 61 + "," + 61;
+    
+		
+		String[] positionRed1 = Gui.positionRed.get(pawnRed1.getPawnPosition()).split(",");
+		String[] positionRed2 = Gui.positionRed.get(pawnRed2.getPawnPosition()).split(",");
+		String[] positionRed3 = Gui.positionRed.get(pawnRed3.getPawnPosition()).split(",");
+		String[] positionRed4 = Gui.positionRed.get(pawnRed4.getPawnPosition()).split(",");
+
+	    String positionRed1Current = Integer.parseInt(positionRed1[0]) + "," + Integer.parseInt(positionRed1[1]) + "," + 61 + "," + 61;
+	    String positionRed2Current = Integer.parseInt(positionRed2[0]) + "," + Integer.parseInt(positionRed2[1]) + "," + 61 + "," + 61;
+	    String positionRed3Current = Integer.parseInt(positionRed3[0]) + "," + Integer.parseInt(positionRed3[1]) + "," + 61 + "," + 61;
+	    String positionRed4Current = Integer.parseInt(positionRed4[0]) + "," + Integer.parseInt(positionRed4[1]) + "," + 61 + "," + 61;
+
+		if((positionBlue1Current.equals(positionRed1Current) && pawnRed1.isPawnStart() == true) || (positionBlue2Current.equals(positionRed1Current) && pawnRed1.isPawnStart() == true) || 
+				(positionBlue3Current.equals(positionRed1Current) && pawnRed1.isPawnStart() == true) || (positionBlue4Current.equals(positionRed1Current) && pawnRed1.isPawnStart() == true)) {
+			String[] setPositionRed = Gui.positionRed.get(45).split(",");
+		    playerRed1.setBounds(Integer.parseInt(setPositionRed[0]), Integer.parseInt(setPositionRed[1]) , 61 , 61);
+		    pawnRed1.setPawnParking(false);
+		    pawnRed1.setPawnParkingPosition(44);
+		    pawnRed1.setPawnPosition(0);
+			pawnRed1.setPawnStart(false);
+		}
+		
+		if((positionBlue1Current.equals(positionRed2Current) && pawnRed2.isPawnStart() == true) || (positionBlue2Current.equals(positionRed2Current) && pawnRed2.isPawnStart() == true) || 
+				(positionBlue3Current.equals(positionRed2Current) && pawnRed2.isPawnStart() == true) || (positionBlue4Current.equals(positionRed2Current) && pawnRed2.isPawnStart() == true)) {
+			String[] setPositionRed = Gui.positionRed.get(46).split(",");
+		    playerRed2.setBounds(Integer.parseInt(setPositionRed[0]), Integer.parseInt(setPositionRed[1]) , 61 , 61);
+		    pawnRed2.setPawnParking(false);
+		    pawnRed2.setPawnParkingPosition(44);
+		    pawnRed2.setPawnPosition(0);
+			pawnRed2.setPawnStart(false);
+		}
+		
+		if((positionBlue1Current.equals(positionRed3Current) && pawnRed3.isPawnStart() == true) || (positionBlue2Current.equals(positionRed3Current) && pawnRed3.isPawnStart() == true) || 
+				(positionBlue3Current.equals(positionRed3Current) && pawnRed3.isPawnStart() == true) || (positionBlue4Current.equals(positionRed3Current) && pawnRed3.isPawnStart() == true)) {
+			String[] setPositionRed = Gui.positionRed.get(45).split(",");
+		    playerRed3.setBounds(Integer.parseInt(setPositionRed[0]), Integer.parseInt(setPositionRed[1]) , 61 , 61);
+		    pawnRed3.setPawnParking(false);
+		    pawnRed3.setPawnParkingPosition(44);
+		    pawnRed3.setPawnPosition(0);
+			pawnRed3.setPawnStart(false);
+		}
+		
+		if((positionBlue1Current.equals(positionRed4Current) && pawnRed1.isPawnStart() == true) || (positionBlue2Current.equals(positionRed4Current) && pawnRed1.isPawnStart() == true) || 
+				(positionBlue3Current.equals(positionRed4Current) && pawnRed1.isPawnStart() == true) || (positionBlue4Current.equals(positionRed4Current) && pawnRed1.isPawnStart() == true)) {
+			String[] setPositionRed = Gui.positionRed.get(45).split(",");
+		    playerRed4.setBounds(Integer.parseInt(setPositionRed[0]), Integer.parseInt(setPositionRed[1]) , 61 , 61);
+		    pawnRed4.setPawnParking(false);
+		    pawnRed4.setPawnParkingPosition(44);
+		    pawnRed4.setPawnPosition(0);
+			pawnRed4.setPawnStart(false);
+		}
+	}
+
 	public static void playerRedFinishGame() {
 		if((pawnRed1.isPawnParking() == true) && (pawnRed2.isPawnParking() == true) && (pawnRed3.isPawnParking() == true) && (pawnRed4.isPawnParking() == true)) {
 			int dialogResult = JOptionPane.showConfirmDialog (null, "Congratulations! Player RED win!!\nDo you want play again?","Win! RED!", JOptionPane.YES_NO_OPTION);

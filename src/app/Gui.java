@@ -121,6 +121,9 @@ public class Gui {
 		frame.getContentPane().add(playerRed1);
 		Game.playerRed1();
 		
+		positionRed.put(0, "0,0");
+		positionBlue.put(0, "0,0");
+		
 		playerRed2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerRed2.setForeground(Color.WHITE);
 		playerRed2.setBackground(Color.RED);
