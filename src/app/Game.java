@@ -99,8 +99,8 @@ public class Game extends Gui {
 						 buttonDice.setText("<html>• • •<br>• • •<br>• • •<br>");
 					 }
 					 playerBlue.setPlayerRollsDiceNumber(randomNumber);
-					 //playerBlue.setPlayerRollsDiceNext(false);
-					 //playerRed.setPlayerRollsDiceNext(true);
+					 playerBlue.setPlayerRollsDiceNext(false);
+					 playerRed.setPlayerRollsDiceNext(true);
 					 currentPlayerRollsDice.setText("<html>BLUE player got the number: "+randomNumber+"<br><br>The player is currently playing:<br>- Player RED -<br>PRESS THE DICE!!!");
 				 }
 			 }  

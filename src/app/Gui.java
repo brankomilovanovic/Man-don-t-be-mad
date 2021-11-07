@@ -740,6 +740,61 @@ public class Gui {
 		position_orange_house_4.setBackground(Color.ORANGE);
 		position_orange_house_4.setBounds(365, 297, 61, 61);
 		frame.getContentPane().add(position_orange_house_4);
+		
+		JLabel emptyPositionRed1 = new JLabel("");
+		emptyPositionRed1.setOpaque(true);
+		emptyPositionRed1.setForeground(Color.LIGHT_GRAY);
+		emptyPositionRed1.setBackground(new Color(192, 192, 192));
+		emptyPositionRed1.setBounds(81, 83, 61, 61);
+		frame.getContentPane().add(emptyPositionRed1);
+		
+		JLabel emptyPositionRed2 = new JLabel("");
+		emptyPositionRed2.setOpaque(true);
+		emptyPositionRed2.setForeground(Color.LIGHT_GRAY);
+		emptyPositionRed2.setBackground(Color.LIGHT_GRAY);
+		emptyPositionRed2.setBounds(152, 83, 61, 61);
+		frame.getContentPane().add(emptyPositionRed2);
+		
+		JLabel emptyPositionRed3 = new JLabel("");
+		emptyPositionRed3.setOpaque(true);
+		emptyPositionRed3.setForeground(Color.LIGHT_GRAY);
+		emptyPositionRed3.setBackground(Color.LIGHT_GRAY);
+		emptyPositionRed3.setBounds(81, 155, 61, 61);
+		frame.getContentPane().add(emptyPositionRed3);
+		
+		JLabel emptyPositionRed4 = new JLabel("");
+		emptyPositionRed4.setOpaque(true);
+		emptyPositionRed4.setForeground(Color.LIGHT_GRAY);
+		emptyPositionRed4.setBackground(Color.LIGHT_GRAY);
+		emptyPositionRed4.setBounds(152, 155, 61, 61);
+		frame.getContentPane().add(emptyPositionRed4);
+		
+		JLabel emptyPositionBlue1 = new JLabel("");
+		emptyPositionBlue1.setOpaque(true);
+		emptyPositionBlue1.setForeground(Color.LIGHT_GRAY);
+		emptyPositionBlue1.setBackground(Color.LIGHT_GRAY);
+		emptyPositionBlue1.setBounds(649, 657, 61, 61);
+		frame.getContentPane().add(emptyPositionBlue1);
+		
+		JLabel emptyPositionBlue2 = new JLabel("");
+		emptyPositionBlue2.setOpaque(true);
+		emptyPositionBlue2.setForeground(Color.LIGHT_GRAY);
+		emptyPositionBlue2.setBackground(Color.LIGHT_GRAY);
+		emptyPositionBlue2.setBounds(578, 657, 61, 61);
+		frame.getContentPane().add(emptyPositionBlue2);
+		
+		JLabel emptyPositionBlue3 = new JLabel("");
+		emptyPositionBlue3.setOpaque(true);
+		emptyPositionBlue3.setForeground(Color.LIGHT_GRAY);
+		emptyPositionBlue3.setBackground(Color.LIGHT_GRAY);
+		emptyPositionBlue3.setBounds(649, 585, 61, 61);
+		frame.getContentPane().add(emptyPositionBlue3);
+		
+		JLabel emptyPositionBlue4 = new JLabel("");
+		emptyPositionBlue4.setOpaque(true);
+		emptyPositionBlue4.setForeground(Color.LIGHT_GRAY);
+		emptyPositionBlue4.setBackground(Color.LIGHT_GRAY);
+		emptyPositionBlue4.setBounds(578, 585, 61, 61);
+		frame.getContentPane().add(emptyPositionBlue4);
 	}
-
 }
