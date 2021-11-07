@@ -3,6 +3,7 @@ package app;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 import characters.Pawn;
 import characters.Player;
@@ -20,6 +21,12 @@ public class Game extends Gui {
 	static JButton buttonDice = gui.getButtonDice();
 	//Text under dice
 	static JLabel currentPlayerRollsDice = gui.getCurrentPlayerRollsDice();
+	
+	//Message for blue player under pawn
+	static JLabel messageLabelBluePlayer = gui.getMessageLabelBluePlayer();
+	
+	//Message for red player under pawn
+	static JLabel messageLabelRedPlayer = gui.getMessageLabelRedPlayer();
 	
 	//Get players pawn RED
 	static JButton playerRed1 = gui.getPlayerRed1();
@@ -135,7 +142,8 @@ public class Game extends Gui {
 					  playerRed.setPlayerRollsDiceNumber(0);
 				 }
 				 else if(pawnRed1.isPawnStart() == false || pawnRed1.getPawnPosition() == 0) {
-					  System.out.println("You haven't got number 6 yet!");
+					  messageLabelRedPlayer.setText("You haven't got number 6 yet!");
+					  clearMessageForRedPlayer(2000); //2000ms = 2s
 				 }
 				 
 				 //Check empty position in the house
@@ -170,18 +178,22 @@ public class Game extends Gui {
 								  pawnRed1.setPawnPosition(nextPosition);
 							  }
 							  else if (pawnRed1.getPawnPosition() == pawnRed1.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
-								  System.out.println("This pawn 1 is in the house, play with another!");
+								  messageLabelRedPlayer.setText("This pawn 1 is in the house, play with another!");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  } 
 							  else if (pawnRed1.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() > pawnRed1.getPawnParkingPosition()) {
-								  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+								  messageLabelRedPlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  }
 							  
 							  if(pawnRed1.getPawnPosition() == pawnRed1.getPawnParkingPosition() && pawnRed1.isPawnParking() == false) {
 								  pawnRed1.setPawnParking(true);
-								  System.out.println("This pawn 1 is in the house, play with another!");
+								  messageLabelRedPlayer.setText("This pawn 1 is in the house, play with another!");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  }
 						  } else {
-							  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+							  messageLabelRedPlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+							  clearMessageForRedPlayer(2000); //2000ms = 2s
 						  }
 					 }
 				 }
@@ -213,7 +225,8 @@ public class Game extends Gui {
 					  playerRed.setPlayerRollsDiceNumber(0);
 				 }
 				 else if(pawnRed2.isPawnStart() == false || pawnRed2.getPawnPosition() == 0) {
-					  System.out.println("You haven't got number 6 yet!");
+					 messageLabelRedPlayer.setText("You haven't got number 6 yet!");
+					 clearMessageForRedPlayer(2000); //2000ms = 2s
 				 }
 				 
 				 //Check empty position in the house
@@ -248,18 +261,22 @@ public class Game extends Gui {
 								  pawnRed2.setPawnPosition(nextPosition);
 							  }
 							  else if (pawnRed2.getPawnPosition() == pawnRed2.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
-								  System.out.println("This pawn 2 is in the house, play with another!");
+								  messageLabelRedPlayer.setText("This pawn 2 is in the house, play with another!");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  } 
 							  else if (pawnRed2.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() > pawnRed2.getPawnParkingPosition()) {
-								  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+								  messageLabelRedPlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  }
 							  
 							  if(pawnRed2.getPawnPosition() == pawnRed2.getPawnParkingPosition() && pawnRed2.isPawnParking() == false) {
 								  pawnRed2.setPawnParking(true);
-								  System.out.println("This pawn 2 is in the house, play with another!");
+								  messageLabelRedPlayer.setText("This pawn 2 is in the house, play with another!");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  }
 						  } else {
-							  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+							  messageLabelRedPlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+							  clearMessageForRedPlayer(2000); //2000ms = 2s
 						  }
 					 }
 				 }
@@ -291,7 +308,8 @@ public class Game extends Gui {
 					  playerRed.setPlayerRollsDiceNumber(0);
 				 }
 				 else if(pawnRed3.isPawnStart() == false || pawnRed3.getPawnPosition() == 0) {
-					  System.out.println("You haven't got number 6 yet!");
+					  messageLabelRedPlayer.setText("You haven't got number 6 yet!");
+					  clearMessageForRedPlayer(2000); //2000ms = 2s
 				 }
 						 
 				 //Check empty position in the house
@@ -326,18 +344,22 @@ public class Game extends Gui {
 								  pawnRed3.setPawnPosition(nextPosition);
 							  }
 							  else if (pawnRed3.getPawnPosition() == pawnRed3.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
-								  System.out.println("This pawn 3 is in the house, play with another!");
+								  messageLabelRedPlayer.setText("This pawn 3 is in the house, play with another!");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  } 
 							  else if (pawnRed3.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() > pawnRed3.getPawnParkingPosition()) {
-								  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+								  messageLabelRedPlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  }
 							  
 							  if(pawnRed3.getPawnPosition() == pawnRed3.getPawnParkingPosition() && pawnRed3.isPawnParking() == false) {
 								  pawnRed3.setPawnParking(true);
-								  System.out.println("This pawn 3 is in the house, play with another!");
+								  messageLabelRedPlayer.setText("This pawn 3 is in the house, play with another!");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  }
 						  } else {
-							  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+							  messageLabelRedPlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+							  clearMessageForRedPlayer(2000); //2000ms = 2s
 						  }
 					 }
 				 }
@@ -369,7 +391,8 @@ public class Game extends Gui {
 					  playerRed.setPlayerRollsDiceNumber(0);
 				 }
 				 else if(pawnRed4.isPawnStart() == false || pawnRed4.getPawnPosition() == 0) {
-					  System.out.println("You haven't got number 6 yet!");
+					  messageLabelRedPlayer.setText("You haven't got number 6 yet!");
+					  clearMessageForRedPlayer(2000); //2000ms = 2s
 				 }
 				 
 				//Check empty position in the house
@@ -404,18 +427,22 @@ public class Game extends Gui {
 								  pawnRed4.setPawnPosition(nextPosition);
 							  }
 							  else if (pawnRed4.getPawnPosition() == pawnRed4.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
-								  System.out.println("This pawn 4 is in the house, play with another!");
+								  messageLabelRedPlayer.setText("This pawn 4 is in the house, play with another!");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  } 
 							  else if (pawnRed4.getPawnPosition() + playerRed.getPlayerRollsDiceNumber() > pawnRed4.getPawnParkingPosition()) {
-								  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+								  messageLabelRedPlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  }
 							  
 							  if(pawnRed4.getPawnPosition() == pawnRed4.getPawnParkingPosition() && pawnRed4.isPawnParking() == false) {
 								  pawnRed4.setPawnParking(true);
-						          System.out.println("This pawn 4 is in the house, play with another!");
+								  messageLabelRedPlayer.setText("This pawn 4 is in the house, play with another!");
+								  clearMessageForRedPlayer(2000); //2000ms = 2s
 							  }
 						  } else {
-							  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+							  messageLabelRedPlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+							  clearMessageForRedPlayer(2000); //2000ms = 2s
 						  }
 					 }
 				 }
@@ -447,7 +474,8 @@ public class Game extends Gui {
 						  playerBlue.setPlayerRollsDiceNumber(0);
 					 }
 					 else if(pawnBlue1.isPawnStart() == false || pawnBlue1.getPawnPosition() == 0) {
-						  System.out.println("You haven't got number 6 yet!");
+						  messageLabelBluePlayer.setText("You haven't got number 6 yet!");
+						  clearMessageForBluePlayer(2000); //2000ms = 2s
 					 }
 					 
 					 //Check empty position in the house
@@ -482,18 +510,23 @@ public class Game extends Gui {
 									  pawnBlue1.setPawnPosition(nextPosition);
 								  }
 								  else if (pawnBlue1.getPawnPosition() == pawnBlue1.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
-									  System.out.println("This pawn 1 is in the house, play with another!");
+									  messageLabelBluePlayer.setText("This pawn 1 is in the house, play with another!");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
+									  
 								  } 
 								  else if (pawnBlue1.getPawnPosition() + playerBlue.getPlayerRollsDiceNumber() > pawnBlue1.getPawnParkingPosition()) {
-									  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+									  messageLabelBluePlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 								  }
 								  
 								  if(pawnBlue1.getPawnPosition() == pawnBlue1.getPawnParkingPosition() && pawnBlue1.isPawnParking() == false) {
 									  pawnBlue1.setPawnParking(true);
-									  System.out.println("This pawn 1 is in the house, play with another!");
+									  messageLabelBluePlayer.setText("This pawn 1 is in the house, play with another!");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 								  }
 							  } else {
-								  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+									  messageLabelBluePlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 							  }
 						 }
 					 }
@@ -526,7 +559,8 @@ public class Game extends Gui {
 						  playerBlue.setPlayerRollsDiceNumber(0);
 					 }
 					 else if(pawnBlue2.isPawnStart() == false || pawnBlue2.getPawnPosition() == 0) {
-						  System.out.println("You haven't got number 6 yet!");
+						  messageLabelBluePlayer.setText("You haven't got number 6 yet!");
+						  clearMessageForBluePlayer(2000); //2000ms = 2s
 					 }
 					 
 					 //Check empty position in the house
@@ -561,18 +595,22 @@ public class Game extends Gui {
 									  pawnBlue2.setPawnPosition(nextPosition);
 								  }
 								  else if (pawnBlue2.getPawnPosition() == pawnBlue2.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
-									  System.out.println("This pawn 2 is in the house, play with another!");
+									  	messageLabelBluePlayer.setText("This pawn 2 is in the house, play with another!");
+									  	clearMessageForBluePlayer(2000); //2000ms = 2s
 								  } 
 								  else if (pawnBlue2.getPawnPosition() + playerBlue.getPlayerRollsDiceNumber() > pawnBlue2.getPawnParkingPosition()) {
-									  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+										messageLabelBluePlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+										clearMessageForBluePlayer(2000); //2000ms = 2s
 								  }
 								  
 								  if(pawnBlue2.getPawnPosition() == pawnBlue2.getPawnParkingPosition() && pawnBlue2.isPawnParking() == false) {
 									  pawnBlue2.setPawnParking(true);
-									  System.out.println("This pawn 2 is in the house, play with another!");
+									  messageLabelBluePlayer.setText("This pawn 2 is in the house, play with another!");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 								  }
 							  } else {
-								  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+									  messageLabelBluePlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 							  }
 						 }
 					 }
@@ -604,7 +642,8 @@ public class Game extends Gui {
 						  playerBlue.setPlayerRollsDiceNumber(0);
 					 }
 					 else if(pawnBlue3.isPawnStart() == false || pawnBlue3.getPawnPosition() == 0) {
-						  System.out.println("You haven't got number 6 yet!");
+						  messageLabelBluePlayer.setText("You haven't got number 6 yet!");
+						  clearMessageForBluePlayer(2000); //2000ms = 2s
 					 }
 							 
 					 //Check empty position in the house
@@ -639,18 +678,22 @@ public class Game extends Gui {
 									  pawnBlue3.setPawnPosition(nextPosition);
 								  }
 								  else if (pawnBlue3.getPawnPosition() == pawnBlue3.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
-									  System.out.println("This pawn 3 is in the house, play with another!");
+									  messageLabelBluePlayer.setText("This pawn 3 is in the house, play with another!");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 								  } 
 								  else if (pawnBlue3.getPawnPosition() + playerBlue.getPlayerRollsDiceNumber() > pawnBlue3.getPawnParkingPosition()) {
-									  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+									  messageLabelBluePlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 								  }
 								  
 								  if(pawnBlue3.getPawnPosition() == pawnBlue3.getPawnParkingPosition() && pawnBlue3.isPawnParking() == false) {
 									  pawnBlue3.setPawnParking(true);
-									  System.out.println("This pawn 3 is in the house, play with another!");
+									  messageLabelBluePlayer.setText("This pawn 3 is in the house, play with another!");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 								  }
 							  } else {
-								  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+									  messageLabelBluePlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 							  }
 						 }
 					 }
@@ -682,7 +725,8 @@ public class Game extends Gui {
 						  playerBlue.setPlayerRollsDiceNumber(0);
 					 }
 					 else if(pawnBlue4.isPawnStart() == false || pawnBlue4.getPawnPosition() == 0) {
-						  System.out.println("You haven't got number 6 yet!");
+						   messageLabelBluePlayer.setText("You haven't got number 6 yet!");
+						   clearMessageForBluePlayer(2000); //2000ms = 2s
 					 }
 					 
 					//Check empty position in the house
@@ -717,18 +761,22 @@ public class Game extends Gui {
 									  pawnBlue4.setPawnPosition(nextPosition);
 								  }
 								  else if (pawnBlue4.getPawnPosition() == pawnBlue4.getPawnParkingPosition()) { //If the pawn is in the house not to throw out an error message for the fields
-									  System.out.println("This pawn 4 is in the house, play with another!");
+									  messageLabelBluePlayer.setText("This pawn 4 is in the house, play with another!");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 								  } 
 								  else if (pawnBlue4.getPawnPosition() + playerBlue.getPlayerRollsDiceNumber() > pawnBlue4.getPawnParkingPosition()) {
-									  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+									  messageLabelBluePlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 								  }
 								  
 								  if(pawnBlue4.getPawnPosition() == pawnBlue4.getPawnParkingPosition() && pawnBlue4.isPawnParking() == false) {
 									  pawnBlue4.setPawnParking(true);
-							          System.out.println("This pawn 4 is in the house, play with another!");
+									  messageLabelBluePlayer.setText("This pawn 4 is in the house, play with another!");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 								  }
 							  } else {
-								  System.out.println("You don't have enough fields for this pawn or there is someone in that house, play with another.");
+									  messageLabelBluePlayer.setText("<html>You don't have enough fields for this pawn<br> or there is someone in that house, play with another.");
+									  clearMessageForBluePlayer(2000); //2000ms = 2s
 							  }
 						 }
 					 }
@@ -1820,5 +1868,21 @@ public class Game extends Gui {
 		pawnBlue4.setPawnParkingPosition(44);
 		pawnBlue4.setPawnPosition(0);
 		pawnBlue4.setPawnStart(false);
+	}
+	
+	public static void clearMessageForRedPlayer(int time) {
+		Timer timer = new Timer(time, event -> {
+			  messageLabelRedPlayer.setText("");
+          });
+          timer.setRepeats(false);
+          timer.start();
+	}
+	
+	public static void clearMessageForBluePlayer(int time) {
+		Timer timer = new Timer(time, event -> {
+			  messageLabelBluePlayer.setText("");
+          });
+          timer.setRepeats(false);
+          timer.start();
 	}
 }

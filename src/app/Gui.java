@@ -23,6 +23,12 @@ public class Gui {
 	//Text under dice
 	private static JLabel currentPlayerRollsDice = new JLabel();
 	
+	//Text under blue player pawn
+	private static JLabel messageLabelBluePlayer = new JLabel();
+	
+	//Text under red player pawn
+	private static JLabel messageLabelRedPlayer = new JLabel();
+		
 	//Players red
 	private static JButton playerRed1 = new JButton("1");
 	private static JButton playerRed2 = new JButton("2");
@@ -41,8 +47,24 @@ public class Gui {
 	
 	public Gui() {
 		super();
-		//initialize();
+		//initialize(); //for editing GUI
 	}
+	
+	
+	//In case of editing GUI
+	/*public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Gui window = new Gui();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}*/
+
 	
 	public Gui(JFrame frame) {
 		super();
@@ -95,19 +117,15 @@ public class Gui {
 		return playerBlue4;
 	}
 	
-	//In case of editing GUI
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Gui window = new Gui();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
+	//Message for blue player under pawn 
+	public JLabel getMessageLabelBluePlayer() {
+		return messageLabelBluePlayer;
+	}
+	
+	//Message for red player under pawn 
+	public JLabel getMessageLabelRedPlayer() {
+		return messageLabelRedPlayer;
+	}
 
 	public static void initialize() throws HeadlessException {
 		frame = new JFrame("Man don't be mad - V1.0 - by Branko Milovanovic");
@@ -808,6 +826,16 @@ public class Gui {
 		emptyPositionBlue4.setBackground(Color.LIGHT_GRAY);
 		emptyPositionBlue4.setBounds(578, 585, 61, 61);
 		frame.getContentPane().add(emptyPositionBlue4);
+		messageLabelBluePlayer.setVerticalAlignment(SwingConstants.TOP);
+		
+		messageLabelBluePlayer.setHorizontalAlignment(SwingConstants.CENTER);
+		messageLabelBluePlayer.setBounds(507, 729, 274, 61);
+		frame.getContentPane().add(messageLabelBluePlayer);
+		messageLabelRedPlayer.setVerticalAlignment(SwingConstants.TOP);
+		
+		messageLabelRedPlayer.setHorizontalAlignment(SwingConstants.CENTER);
+		messageLabelRedPlayer.setBounds(10, 225, 274, 61);
+		frame.getContentPane().add(messageLabelRedPlayer);
 		positionBlue.put(48, "578,585");
 	}
 }

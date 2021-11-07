@@ -1,8 +1,16 @@
+/*
+ * Man don't be made V1.0 (Beta | 1v1 player)
+ * Game made for student project
+ * Project made: Branko Milovanovic student in Singidunum university
+ * GitLab: https://gitlab.com/brankomilovanovic2000
+ * GitHub: https://github.com/brankomilovanovic
+ * Enjoy!
+ * */
+
+
 package app;
 
 import java.awt.EventQueue;
-
-/* TODO: Dodati obavestenja za igrace ispod njihovih pijuna. */
 
 public class Main {
 
