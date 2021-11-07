@@ -66,11 +66,10 @@ public class Game extends Gui {
 						 buttonDice.setText("<html>*");
 					 }
 					 else if(randomNumber == 2) {
-						 buttonDice.setText("<html>*<br><br>⠀⠀⠀*<br>");
+						 buttonDice.setText("<html>*<br><br>*");
 					 }
 					 else if(randomNumber == 3) {
-						 //buttonDice.setText("<html>*⠀⠀<br>  •<br>⠀⠀⠀•<br>");
-						 buttonDice.setText("<html>*<br>•<br>•<br>");
+						 buttonDice.setText("<html>*<br>*<br>*<br>");
 					 }
 					 else if(randomNumber == 4) {
 						 buttonDice.setText("<html>*⠀⠀•<br><br>•⠀⠀•<br>");
