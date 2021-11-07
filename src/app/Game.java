@@ -72,13 +72,13 @@ public class Game extends Gui {
 						 buttonDice.setText("<html>*<br>*<br>*<br>");
 					 }
 					 else if(randomNumber == 4) {
-						 buttonDice.setText("<html>*⠀⠀•<br><br>•⠀⠀•<br>");
+						 buttonDice.setText("<html>*   *<br><br>*   *<br>");
 					 }
 					 else if(randomNumber == 5) {
-						 buttonDice.setText("<html>*⠀⠀•<br>  •<br>•⠀⠀•<br>");
+						 buttonDice.setText("<html>*   *<br> * <br>*   *<br>");
 					 }
 					 else if(randomNumber == 6) {
-						 buttonDice.setText("<html>* • •<br>• • •<br>• • •<br>");
+						 buttonDice.setText("<html>* * *<br>* * *<br>* * *<br>");
 					 }
 					 playerRed.setPlayerRollsDiceNumber(randomNumber);
 					 
@@ -97,22 +97,22 @@ public class Game extends Gui {
 					 int randomNumber = random.nextInt(6) + 1;
 					 System.out.println("Blue player rolls dice! Number: " + randomNumber);
 					 if(randomNumber == 1) {
-						 buttonDice.setText("<html>•");
+						 buttonDice.setText("<html>*");
 					 }
 					 else if(randomNumber == 2) {
-						 buttonDice.setText("<html>•<br><br>⠀⠀⠀•<br>");
+						 buttonDice.setText("<html>*<br><br>*");
 					 }
 					 else if(randomNumber == 3) {
-						 buttonDice.setText("<html>•⠀⠀<br>  •<br>⠀⠀⠀•<br>");
+						 buttonDice.setText("<html>*<br>*<br>*<br>");
 					 }
 					 else if(randomNumber == 4) {
-						 buttonDice.setText("<html>•⠀⠀•<br><br>•⠀⠀•<br>");
+						 buttonDice.setText("<html>*   *<br><br>*   *<br>");
 					 }
 					 else if(randomNumber == 5) {
-						 buttonDice.setText("<html>•⠀⠀•<br>  •<br>•⠀⠀•<br>");
+						 buttonDice.setText("<html>*   *<br> * <br>*   *<br>");
 					 }
 					 else if(randomNumber == 6) {
-						 buttonDice.setText("<html>• • •<br>• • •<br>• • •<br>");
+						 buttonDice.setText("<html>* * *<br>* * *<br>* * *<br>");
 					 }
 					 playerBlue.setPlayerRollsDiceNumber(randomNumber);
 					 

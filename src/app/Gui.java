@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.Window;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -131,6 +133,8 @@ public class Gui {
 		frame.setBounds(100, 100, 983, 859);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setIconImage(new ImageIcon(".\\src\\icons\\app.png").getImage());
+
 		
 		playerRed1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerRed1.setForeground(Color.WHITE);
