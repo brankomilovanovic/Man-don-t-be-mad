@@ -747,6 +747,7 @@ public class Gui {
 		emptyPositionRed1.setBackground(new Color(192, 192, 192));
 		emptyPositionRed1.setBounds(81, 83, 61, 61);
 		frame.getContentPane().add(emptyPositionRed1);
+		positionRed.put(45, "81,83");
 		
 		JLabel emptyPositionRed2 = new JLabel("");
 		emptyPositionRed2.setOpaque(true);
@@ -754,6 +755,7 @@ public class Gui {
 		emptyPositionRed2.setBackground(Color.LIGHT_GRAY);
 		emptyPositionRed2.setBounds(152, 83, 61, 61);
 		frame.getContentPane().add(emptyPositionRed2);
+		positionRed.put(46, "152,83");
 		
 		JLabel emptyPositionRed3 = new JLabel("");
 		emptyPositionRed3.setOpaque(true);
@@ -761,6 +763,7 @@ public class Gui {
 		emptyPositionRed3.setBackground(Color.LIGHT_GRAY);
 		emptyPositionRed3.setBounds(81, 155, 61, 61);
 		frame.getContentPane().add(emptyPositionRed3);
+		positionRed.put(47, "81,155");
 		
 		JLabel emptyPositionRed4 = new JLabel("");
 		emptyPositionRed4.setOpaque(true);
@@ -768,6 +771,7 @@ public class Gui {
 		emptyPositionRed4.setBackground(Color.LIGHT_GRAY);
 		emptyPositionRed4.setBounds(152, 155, 61, 61);
 		frame.getContentPane().add(emptyPositionRed4);
+		positionRed.put(48, "152,155");
 		
 		JLabel emptyPositionBlue1 = new JLabel("");
 		emptyPositionBlue1.setOpaque(true);
@@ -775,6 +779,7 @@ public class Gui {
 		emptyPositionBlue1.setBackground(Color.LIGHT_GRAY);
 		emptyPositionBlue1.setBounds(649, 657, 61, 61);
 		frame.getContentPane().add(emptyPositionBlue1);
+		positionBlue.put(45, "649,657");
 		
 		JLabel emptyPositionBlue2 = new JLabel("");
 		emptyPositionBlue2.setOpaque(true);
@@ -782,6 +787,7 @@ public class Gui {
 		emptyPositionBlue2.setBackground(Color.LIGHT_GRAY);
 		emptyPositionBlue2.setBounds(578, 657, 61, 61);
 		frame.getContentPane().add(emptyPositionBlue2);
+		positionBlue.put(46, "578,657");
 		
 		JLabel emptyPositionBlue3 = new JLabel("");
 		emptyPositionBlue3.setOpaque(true);
@@ -789,6 +795,7 @@ public class Gui {
 		emptyPositionBlue3.setBackground(Color.LIGHT_GRAY);
 		emptyPositionBlue3.setBounds(649, 585, 61, 61);
 		frame.getContentPane().add(emptyPositionBlue3);
+		positionBlue.put(47, "649,585");
 		
 		JLabel emptyPositionBlue4 = new JLabel("");
 		emptyPositionBlue4.setOpaque(true);
@@ -796,5 +803,6 @@ public class Gui {
 		emptyPositionBlue4.setBackground(Color.LIGHT_GRAY);
 		emptyPositionBlue4.setBounds(578, 585, 61, 61);
 		frame.getContentPane().add(emptyPositionBlue4);
+		positionBlue.put(48, "578,585");
 	}
 }

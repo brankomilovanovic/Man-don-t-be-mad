@@ -2,6 +2,7 @@ package app;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import characters.Pawn;
 import characters.Player;
@@ -175,6 +176,9 @@ public class Game extends Gui {
 				 }
 				 //Check if there is already a pawn in the house and fill in the first place to check other positions
 				 positionInHouseCheckForRed1();
+				 
+				 //After every move, check winner
+				 playerRedFinishGame();
 			 }  
 		});
 	}
@@ -244,8 +248,12 @@ public class Game extends Gui {
 				 catch(Exception error) {
 					 System.out.println("You don't have enough fields for this pawn, play with another. ERROR!");
 				 }
-				//Check if there is already a pawn in the house and fill in the first place to check other positions
+				 
+				 //Check if there is already a pawn in the house and fill in the first place to check other positions
 				 positionInHouseCheckForRed2();
+				 
+				 //After every move, check winner
+				 playerRedFinishGame();
 			 }  
 		});
 	}
@@ -318,6 +326,9 @@ public class Game extends Gui {
 				 
 			     //Check if there is already a pawn in the house and fill in the first place to check other positions
 			     positionInHouseCheckForRed3();
+			     
+			     //After every move, check winner
+				 playerRedFinishGame();
 			 } 
 		});
 	}
@@ -390,6 +401,9 @@ public class Game extends Gui {
 				 
 				 //Check if there is already a pawn in the house and fill in the first place to check other positions
 			     positionInHouseCheckForRed4();
+			     
+			     //After every move, check winner
+				 playerRedFinishGame();
 			 }  
 		});
 	}
@@ -460,8 +474,12 @@ public class Game extends Gui {
 					 catch(Exception error) {
 						 System.out.println("You don't have enough fields for this pawn, play with another. ERROR!");
 					 }
+					 
 					 //Check if there is already a pawn in the house and fill in the first place to check other positions
 					 positionInHouseCheckForBlue1();
+					 
+					 //After every move, check winner
+					 playerBlueFinishGame();
 				 }  
 			});
 		}
@@ -531,8 +549,12 @@ public class Game extends Gui {
 					 catch(Exception error) {
 						 System.out.println("You don't have enough fields for this pawn, play with another. ERROR!");
 					 }
+					 
 					 //Check if there is already a pawn in the house and fill in the first place to check other positions
 					 positionInHouseCheckForBlue2();
+					 
+					 //After every move, check winner
+					 playerBlueFinishGame();
 				 }  
 			});
 		}
@@ -605,6 +627,9 @@ public class Game extends Gui {
 					 
 				     //Check if there is already a pawn in the house and fill in the first place to check other positions
 				     positionInHouseCheckForBlue3();
+				     
+					 //After every move, check winner
+					 playerBlueFinishGame();
 				 } 
 			});
 		}
@@ -677,6 +702,9 @@ public class Game extends Gui {
 					 
 					 //Check if there is already a pawn in the house and fill in the first place to check other positions
 				     positionInHouseCheckForBlue4();
+				     
+					 //After every move, check winner
+					 playerBlueFinishGame();
 				 }  
 			});
 		}
@@ -1535,5 +1563,96 @@ public class Game extends Gui {
 			 }	
 		 }
 		 return false;
+	}
+	
+	public static void playerRedFinishGame() {
+		if((pawnRed1.isPawnParking() == true) && (pawnRed2.isPawnParking() == true) && (pawnRed3.isPawnParking() == true) && (pawnRed4.isPawnParking() == true)) {
+			int dialogResult = JOptionPane.showConfirmDialog (null, "Congratulations! Player RED win!!\nDo you want play again?","Win! RED!", JOptionPane.YES_NO_OPTION);
+			if(dialogResult == JOptionPane.YES_OPTION){
+			     restartGame();
+			}
+			else if(dialogResult == JOptionPane.NO_OPTION) {
+				System.exit(0);
+			}
+			else {
+				System.exit(0);
+			}
+		}
+	}
+	
+	public static void playerBlueFinishGame() {
+		if((pawnBlue1.isPawnParking() == true) && (pawnBlue2.isPawnParking() == true) && (pawnBlue3.isPawnParking() == true) && (pawnBlue4.isPawnParking() == true)) {
+			int dialogResult = JOptionPane.showConfirmDialog (null, "Congratulations! Player BLUE win!!\nDo you want play again?","Win! BLUE!", JOptionPane.YES_NO_OPTION);
+			if(dialogResult == JOptionPane.YES_OPTION){
+			     restartGame();
+			}
+			else if(dialogResult == JOptionPane.NO_OPTION) {
+				System.exit(0);
+			}
+			else {
+				System.exit(0);
+			}
+		}
+	}
+	
+	public static void restartGame() {
+		
+		//Restart red player pawn
+		String[] setPositionRed1 = Gui.positionRed.get(45).split(",");
+	    playerRed1.setBounds(Integer.parseInt(setPositionRed1[0]), Integer.parseInt(setPositionRed1[1]) , 61 , 61);
+		pawnRed1.setPawnParking(false);
+		pawnRed1.setPawnParkingPosition(44);
+		pawnRed1.setPawnStart(false);
+		pawnRed1.setPawnPosition(0);
+		
+		String[] setPositionRed2 = Gui.positionRed.get(46).split(",");
+	    playerRed2.setBounds(Integer.parseInt(setPositionRed2[0]), Integer.parseInt(setPositionRed2[1]) , 61 , 61);
+		pawnRed2.setPawnParking(false);
+		pawnRed2.setPawnParkingPosition(44);
+		pawnRed2.setPawnStart(false);
+		pawnRed2.setPawnPosition(0);
+		
+		String[] setPositionRed3 = Gui.positionRed.get(47).split(",");
+	    playerRed3.setBounds(Integer.parseInt(setPositionRed3[0]), Integer.parseInt(setPositionRed3[1]) , 61 , 61);
+		pawnRed3.setPawnParking(false);
+		pawnRed3.setPawnParkingPosition(44);
+		pawnRed3.setPawnStart(false);
+		pawnRed3.setPawnPosition(0);
+		
+		String[] setPositionRed4 = Gui.positionRed.get(48).split(",");
+	    playerRed4.setBounds(Integer.parseInt(setPositionRed4[0]), Integer.parseInt(setPositionRed4[1]) , 61 , 61);
+		pawnRed4.setPawnParking(false);
+		pawnRed4.setPawnParkingPosition(44);
+		pawnRed4.setPawnStart(false);
+		pawnRed4.setPawnPosition(0);
+		
+		//Restart blue player pawn
+		String[] setPositionBlue1 = Gui.positionBlue.get(45).split(",");
+	    playerBlue1.setBounds(Integer.parseInt(setPositionBlue1[0]), Integer.parseInt(setPositionBlue1[1]) , 61 , 61);
+		pawnBlue1.setPawnParking(false);
+		pawnBlue1.setPawnParkingPosition(44);
+		pawnBlue1.setPawnPosition(0);
+		pawnBlue1.setPawnStart(false);
+		
+		String[] setPositionBlue2 = Gui.positionBlue.get(46).split(",");
+	    playerBlue2.setBounds(Integer.parseInt(setPositionBlue2[0]), Integer.parseInt(setPositionBlue2[1]) , 61 , 61);
+		pawnBlue2.setPawnParking(false);
+		pawnBlue2.setPawnParkingPosition(44);
+		pawnBlue2.setPawnPosition(0);
+		pawnBlue2.setPawnStart(false);
+		
+		String[] setPositionBlue3 = Gui.positionBlue.get(47).split(",");
+	    playerBlue3.setBounds(Integer.parseInt(setPositionBlue3[0]), Integer.parseInt(setPositionBlue3[1]) , 61 , 61);
+		pawnBlue3.setPawnParking(false);
+		pawnBlue3.setPawnParkingPosition(44);
+		pawnBlue3.setPawnPosition(0);
+		pawnBlue3.setPawnStart(false);
+		
+		String[] setPositionBlue4 = Gui.positionBlue.get(48).split(",");
+	    playerBlue4.setBounds(Integer.parseInt(setPositionBlue4[0]), Integer.parseInt(setPositionBlue4[1]) , 61 , 61);
+		pawnBlue4.setPawnParking(false);
+		pawnBlue4.setPawnParkingPosition(44);
+		pawnBlue4.setPawnPosition(0);
+		pawnBlue4.setPawnStart(false);
 	}
 }
