@@ -69,7 +69,8 @@ public class Game extends Gui {
 						 buttonDice.setText("<html>*<br><br>⠀⠀⠀*<br>");
 					 }
 					 else if(randomNumber == 3) {
-						 buttonDice.setText("<html>*⠀⠀<br>  •<br>⠀⠀⠀•<br>");
+						 //buttonDice.setText("<html>*⠀⠀<br>  •<br>⠀⠀⠀•<br>");
+						 buttonDice.setText("<html>*<br>•<br>•<br>");
 					 }
 					 else if(randomNumber == 4) {
 						 buttonDice.setText("<html>*⠀⠀•<br><br>•⠀⠀•<br>");
