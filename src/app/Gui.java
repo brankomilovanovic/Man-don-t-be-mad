@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.*;  
 
 //import java.awt.EventQueue;
 
@@ -109,10 +110,11 @@ public class Gui {
 	}*/
 
 	public static void initialize() throws HeadlessException {
-		frame = new JFrame();
+		frame = new JFrame("Man don't be mad - V1.0 - by Branko Milovanovic");
 		frame.setBounds(100, 100, 983, 859);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setIconImage(new ImageIcon(".\\icons\\app.png").getImage());
 		
 		playerRed1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerRed1.setForeground(Color.WHITE);

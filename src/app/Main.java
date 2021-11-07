@@ -2,13 +2,8 @@ package app;
 
 import java.awt.EventQueue;
 
-/* 
- * Kada se to odradi ubaciti plavog igraca i mogucnost jedenja jedan drugog
- * kada plavi igrac igra pozicija ce biti trenutna pozicija -20, zbog napredovanja u odnosu na poziciju crvenog
- * 
- * 
- * 
- * */
+/* TODO: Dodati obavestenja za igrace ispod njihovih pijuna. */
+
 public class Main {
 
 	Gui gui = new Gui();

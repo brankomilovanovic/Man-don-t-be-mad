@@ -74,9 +74,17 @@ public class Game extends Gui {
 						 buttonDice.setText("<html>• • •<br>• • •<br>• • •<br>");
 					 }
 					 playerRed.setPlayerRollsDiceNumber(randomNumber);
-					 playerRed.setPlayerRollsDiceNext(false);
-					 playerBlue.setPlayerRollsDiceNext(true);
-					 currentPlayerRollsDice.setText("<html>RED player got the number: "+randomNumber+"<br><br>The player is currently playing:<br>- Player BLUE -<br>PRESS THE DICE!!!");
+					 
+					 if(playerRed.getPlayerRollsDiceNumber() == 6) {
+						 playerRed.setPlayerRollsDiceNext(true);
+						 playerBlue.setPlayerRollsDiceNext(false);
+						 currentPlayerRollsDice.setText("<html>RED player got the number: "+randomNumber+"<br><br>The player is currently playing:<br>- Player RED (AGAIN) -<br>PRESS THE DICE!!!");
+					 } else {
+						 playerRed.setPlayerRollsDiceNext(false);
+						 playerBlue.setPlayerRollsDiceNext(true);
+						 currentPlayerRollsDice.setText("<html>RED player got the number: "+randomNumber+"<br><br>The player is currently playing:<br>- Player BLUE -<br>PRESS THE DICE!!!");
+					 }
+					 
 				 }
 				 else if(playerBlue.getPlayerRollsDiceNext() == true) {
 					 int randomNumber = random.nextInt(6) + 1;
@@ -100,9 +108,16 @@ public class Game extends Gui {
 						 buttonDice.setText("<html>• • •<br>• • •<br>• • •<br>");
 					 }
 					 playerBlue.setPlayerRollsDiceNumber(randomNumber);
-					 playerBlue.setPlayerRollsDiceNext(false);
-					 playerRed.setPlayerRollsDiceNext(true);
-					 currentPlayerRollsDice.setText("<html>BLUE player got the number: "+randomNumber+"<br><br>The player is currently playing:<br>- Player RED -<br>PRESS THE DICE!!!");
+					 
+					 if(playerBlue.getPlayerRollsDiceNumber() == 6) {
+						 playerRed.setPlayerRollsDiceNext(false);
+						 playerBlue.setPlayerRollsDiceNext(true);
+						 currentPlayerRollsDice.setText("<html>BLUE player got the number: "+randomNumber+"<br><br>The player is currently playing:<br>- Player BLUE (AGAIN) -<br>PRESS THE DICE!!!");
+					 } else {
+						 playerRed.setPlayerRollsDiceNext(true);
+						 playerBlue.setPlayerRollsDiceNext(false);
+						 currentPlayerRollsDice.setText("<html>BLUE player got the number: "+randomNumber+"<br><br>The player is currently playing:<br>- Player RED -<br>PRESS THE DICE!!!");
+					 }
 				 }
 			 }  
 		});
@@ -1611,8 +1626,6 @@ public class Game extends Gui {
 	    String positionBlue3Current = Integer.parseInt(positionBlue3[0]) + "," + Integer.parseInt(positionBlue3[1]) + "," + 61 + "," + 61;
 	    String positionBlue4Current = Integer.parseInt(positionBlue4[0]) + "," + Integer.parseInt(positionBlue4[1]) + "," + 61 + "," + 61;
 	    
-	    //System.out.println("Equals: " + positionRed1Current.equals(positionBlue1Current));
-
 		if((positionRed1Current.equals(positionBlue1Current) && pawnBlue1.isPawnStart() == true) || (positionRed2Current.equals(positionBlue1Current) && pawnBlue1.isPawnStart() == true) || 
 				(positionRed3Current.equals(positionBlue1Current) && pawnBlue1.isPawnStart() == true) || (positionRed4Current.equals(positionBlue1Current) && pawnBlue1.isPawnStart() == true)) {
 			String[] setPositionBlue = Gui.positionBlue.get(45).split(",");
@@ -1699,7 +1712,7 @@ public class Game extends Gui {
 		
 		if((positionBlue1Current.equals(positionRed3Current) && pawnRed3.isPawnStart() == true) || (positionBlue2Current.equals(positionRed3Current) && pawnRed3.isPawnStart() == true) || 
 				(positionBlue3Current.equals(positionRed3Current) && pawnRed3.isPawnStart() == true) || (positionBlue4Current.equals(positionRed3Current) && pawnRed3.isPawnStart() == true)) {
-			String[] setPositionRed = Gui.positionRed.get(45).split(",");
+			String[] setPositionRed = Gui.positionRed.get(47).split(",");
 		    playerRed3.setBounds(Integer.parseInt(setPositionRed[0]), Integer.parseInt(setPositionRed[1]) , 61 , 61);
 		    pawnRed3.setPawnParking(false);
 		    pawnRed3.setPawnParkingPosition(44);
@@ -1707,9 +1720,9 @@ public class Game extends Gui {
 			pawnRed3.setPawnStart(false);
 		}
 		
-		if((positionBlue1Current.equals(positionRed4Current) && pawnRed1.isPawnStart() == true) || (positionBlue2Current.equals(positionRed4Current) && pawnRed1.isPawnStart() == true) || 
-				(positionBlue3Current.equals(positionRed4Current) && pawnRed1.isPawnStart() == true) || (positionBlue4Current.equals(positionRed4Current) && pawnRed1.isPawnStart() == true)) {
-			String[] setPositionRed = Gui.positionRed.get(45).split(",");
+		if((positionBlue1Current.equals(positionRed4Current) && pawnRed4.isPawnStart() == true) || (positionBlue2Current.equals(positionRed4Current) && pawnRed4.isPawnStart() == true) || 
+				(positionBlue3Current.equals(positionRed4Current) && pawnRed4.isPawnStart() == true) || (positionBlue4Current.equals(positionRed4Current) && pawnRed4.isPawnStart() == true)) {
+			String[] setPositionRed = Gui.positionRed.get(48).split(",");
 		    playerRed4.setBounds(Integer.parseInt(setPositionRed[0]), Integer.parseInt(setPositionRed[1]) , 61 , 61);
 		    pawnRed4.setPawnParking(false);
 		    pawnRed4.setPawnParkingPosition(44);
