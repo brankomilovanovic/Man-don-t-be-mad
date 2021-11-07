@@ -9,8 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.util.HashMap;
-import java.util.Map;
-import javax.swing.*;  
+import java.util.Map;  
 
 //import java.awt.EventQueue;
 
@@ -132,7 +131,6 @@ public class Gui {
 		frame.setBounds(100, 100, 983, 859);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		frame.setIconImage(new ImageIcon(".\\src\\icons\\app.png").getImage());
 		
 		playerRed1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		playerRed1.setForeground(Color.WHITE);
