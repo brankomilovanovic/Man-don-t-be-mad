@@ -1,5 +1,7 @@
 # Man don't be mad
 A simple application modeled on the game **'Man Don't Be Mad'**.
+<br>
+Made using **Java** programming language.
 <br><hr>
 In this application, there are only two players who play alternately, blue and red.
 <br>
