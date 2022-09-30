@@ -63,22 +63,22 @@ public class Game extends Gui {
 					 int randomNumber = random.nextInt(6) + 1;
 					 System.out.println("Red player rolls dice! Number: " + randomNumber);
 					 if(randomNumber == 1) {
-						 buttonDice.setText("<html>*");
+						 buttonDice.setText("<html>•</html>");
 					 }
 					 else if(randomNumber == 2) {
-						 buttonDice.setText("<html>*<br><br>*");
+						 buttonDice.setText("<html>•<br><br>•</html>");
 					 }
 					 else if(randomNumber == 3) {
-						 buttonDice.setText("<html>*<br>*<br>*<br>");
+						 buttonDice.setText("<html>•<br>•<br>•<br></html>");
 					 }
 					 else if(randomNumber == 4) {
-						 buttonDice.setText("<html>*   *<br><br>*   *<br>");
+						 buttonDice.setText("<html>•   •<br><br>•   •<br></html>");
 					 }
 					 else if(randomNumber == 5) {
-						 buttonDice.setText("<html>*   *<br> * <br>*   *<br>");
+						 buttonDice.setText("<html>•   •<br> • <br>•   •<br></html>");
 					 }
 					 else if(randomNumber == 6) {
-						 buttonDice.setText("<html>* * *<br>* * *<br>* * *<br>");
+						 buttonDice.setText("<html>• • •<br>• • •<br>• • •<br></html>");
 					 }
 					 playerRed.setPlayerRollsDiceNumber(randomNumber);
 					 
@@ -97,22 +97,22 @@ public class Game extends Gui {
 					 int randomNumber = random.nextInt(6) + 1;
 					 System.out.println("Blue player rolls dice! Number: " + randomNumber);
 					 if(randomNumber == 1) {
-						 buttonDice.setText("<html>*");
+						 buttonDice.setText("<html>•</html>");
 					 }
 					 else if(randomNumber == 2) {
-						 buttonDice.setText("<html>*<br><br>*");
+						 buttonDice.setText("<html>•<br><br>•</html>");
 					 }
 					 else if(randomNumber == 3) {
-						 buttonDice.setText("<html>*<br>*<br>*<br>");
+						 buttonDice.setText("<html>•<br>•<br>•<br></html>");
 					 }
 					 else if(randomNumber == 4) {
-						 buttonDice.setText("<html>*   *<br><br>*   *<br>");
+						 buttonDice.setText("<html>•   •<br><br>•   •<br></html>");
 					 }
 					 else if(randomNumber == 5) {
-						 buttonDice.setText("<html>*   *<br> * <br>*   *<br>");
+						 buttonDice.setText("<html>•   •<br> • <br>•   •<br></html>");
 					 }
 					 else if(randomNumber == 6) {
-						 buttonDice.setText("<html>* * *<br>* * *<br>* * *<br>");
+						 buttonDice.setText("<html>• • •<br>• • •<br>• • •<br></html>");
 					 }
 					 playerBlue.setPlayerRollsDiceNumber(randomNumber);
 					 
